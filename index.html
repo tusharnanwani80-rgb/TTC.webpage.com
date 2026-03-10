@@ -1,126 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+
 <meta charset="UTF-8">
 <title>TTC Quiz</title>
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial;
-background:#0f172a;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+height:100vh;
+background:linear-gradient(270deg,#667eea,#764ba2,#6dd5ed);
+background-size:600% 600%;
+animation:bgMove 12s ease infinite;
+display:flex;
+justify-content:center;
+align-items:center;
 color:white;
 overflow:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.screen{
+display:none;
+flex-direction:column;
+align-items:center;
 text-align:center;
 }
 
-.section{
-display:none;
-height:100vh;
-width:100%;
-position:absolute;
-top:0;
-left:0;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-}
-
-/* Intro */
-
-#intro{
+.active{
 display:flex;
-background:black;
-}
-
-#stars{
-position:absolute;
-width:100%;
-height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:starsMove 40s linear infinite;
-}
-
-@keyframes starsMove{
-from{background-position:0 0}
-to{background-position:1000px 1000px}
 }
 
 .logo{
 width:140px;
 margin-bottom:20px;
-animation:float 3s infinite ease-in-out;
+animation:logoFloat 3s ease-in-out infinite;
 }
 
-@keyframes float{
+@keyframes logoFloat{
 0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
+50%{transform:translateY(-12px)}
 100%{transform:translateY(0)}
 }
 
-/* Name screen */
+.card{
+
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+width:320px;
+
+}
+
+h1{
+margin-bottom:10px;
+}
 
 input{
+
+margin-top:20px;
 padding:12px;
-font-size:16px;
-border-radius:8px;
 border:none;
-margin-top:15px;
-width:220px;
+border-radius:8px;
+width:100%;
+font-size:16px;
+
 }
 
 button{
+
+margin-top:20px;
 padding:12px 25px;
-font-size:16px;
-background:#ff6b6b;
-color:white;
 border:none;
-border-radius:8px;
-cursor:pointer;
-margin-top:20px;
-}
-
-/* quiz */
-
-.option{
-background:#1e293b;
-padding:12px;
-margin:10px;
-border-radius:8px;
-cursor:pointer;
-width:200px;
-}
-
-.option:hover{
-background:#334155;
-}
-
-.progress{
-height:8px;
-width:300px;
-background:#334155;
-margin-top:20px;
 border-radius:10px;
-overflow:hidden;
+font-size:16px;
+background:#ff7a18;
+color:white;
+cursor:pointer;
+transition:0.3s;
+
 }
 
-.bar{
-height:100%;
-width:0%;
-background:#22c55e;
+button:hover{
+
+transform:scale(1.08);
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+
 <!-- INTRO -->
 
-<div id="intro" class="section" style="display:flex">
-
-<div id="stars"></div>
+<div id="intro" class="screen active">
 
 <img class="logo" src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png">
 
@@ -133,245 +123,72 @@ background:#22c55e;
 
 <!-- NAME SCREEN -->
 
-<div id="nameScreen" class="section">
+<div id="nameScreen" class="screen">
+
+<div class="card">
 
 <h2>Enter Your Name</h2>
 
-<input id="studentName" placeholder="Your Name">
+<input id="name" placeholder="Your name">
 
 <button onclick="saveName()">Continue</button>
+
+</div>
 
 </div>
 
 
 <!-- WELCOME -->
 
-<div id="welcome" class="section">
+<div id="welcome" class="screen">
+
+<div class="card">
 
 <h2 id="welcomeText"></h2>
 
-<p>Ready for today's quiz?</p>
+<p>Ready to start today's quiz?</p>
 
 <button onclick="startQuiz()">Start Quiz</button>
 
 </div>
 
-
-<!-- QUIZ -->
-
-<div id="quiz" class="section">
-
-<h2 id="question"></h2>
-
-<div id="options"></div>
-
-<div class="progress">
-<div id="bar" class="bar"></div>
 </div>
 
-</div>
-
-
-<!-- RESULT -->
-
-<div id="result" class="section">
-
-<h2 id="scoreText"></h2>
-
-<canvas id="confetti"></canvas>
-
-</div>
 
 
 <script>
 
 let student=""
-let qIndex=0
-let score=0
 
-const quiz=[
-{
-q:"She ___ to school daily.",
-options:["Go","Goes","Going"],
-answer:1
-},
-{
-q:"They ___ football yesterday.",
-options:["Played","Play","Playing"],
-answer:0
-},
-{
-q:"I ___ my homework now.",
-options:["Do","Doing","Am doing"],
-answer:2
-},
-{
-q:"We ___ TV every evening.",
-options:["Watch","Watching","Watched"],
-answer:0
-},
-{
-q:"He ___ lunch already.",
-options:["Eat","Ate","Has eaten"],
-answer:2
-}
-]
-
-
-/* intro auto */
+/* intro timer */
 
 setTimeout(()=>{
-show("nameScreen")
-},3000)
+
+document.getElementById("intro").classList.remove("active")
+document.getElementById("nameScreen").classList.add("active")
+
+},2500)
 
 
-function show(id){
-
-document.querySelectorAll(".section")
-.forEach(s=>s.style.display="none")
-
-document.getElementById(id).style.display="flex"
-
-}
-
-
-/* save name */
 
 function saveName(){
 
-student=document.getElementById("studentName").value
+student=document.getElementById("name").value
 
 if(student=="") student="Student"
 
-document.getElementById("welcomeText").innerText=
-"Welcome "+student+" 👋"
+document.getElementById("welcomeText").innerText="Welcome "+student+" 👋"
 
-show("welcome")
+document.getElementById("nameScreen").classList.remove("active")
+document.getElementById("welcome").classList.add("active")
 
 }
 
 
-/* start quiz */
 
 function startQuiz(){
 
-show("quiz")
-loadQuestion()
-
-}
-
-
-/* load question */
-
-function loadQuestion(){
-
-let q=quiz[qIndex]
-
-document.getElementById("question").innerText=q.q
-
-let optionsHTML=""
-
-q.options.forEach((opt,i)=>{
-
-optionsHTML+=
-`<div class="option" onclick="check(${i})">${opt}</div>`
-
-})
-
-document.getElementById("options").innerHTML=optionsHTML
-
-document.getElementById("bar").style.width=
-((qIndex)/quiz.length)*100+"%"
-
-}
-
-
-/* check answer */
-
-function check(i){
-
-if(i===quiz[qIndex].answer) score++
-
-qIndex++
-
-if(qIndex<quiz.length){
-
-loadQuestion()
-
-}else{
-
-showResult()
-
-}
-
-}
-
-
-/* result */
-
-function showResult(){
-
-show("result")
-
-let percent=Math.round((score/quiz.length)*100)
-
-document.getElementById("scoreText").innerText=
-student+" scored "+percent+"%"
-
-startConfetti()
-
-}
-
-
-/* confetti */
-
-function startConfetti(){
-
-const canvas=document.getElementById("confetti")
-const ctx=canvas.getContext("2d")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let pieces=[]
-
-for(let i=0;i<150;i++){
-
-pieces.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*6+4,
-d:Math.random()*10
-})
-
-}
-
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-ctx.fillStyle="white"
-
-pieces.forEach(p=>{
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
-ctx.fill()
-})
-
-update()
-
-}
-
-function update(){
-
-pieces.forEach(p=>{
-p.y+=2
-if(p.y>canvas.height) p.y=0
-})
-
-}
-
-setInterval(draw,20)
+alert("Quiz Starts Here")
 
 }
 
