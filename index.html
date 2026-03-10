@@ -1,198 +1,494 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TTC Quiz</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI;
-}
-
 body{
-height:100vh;
-background:linear-gradient(270deg,#667eea,#764ba2,#6dd5ed);
-background-size:600% 600%;
-animation:bgMove 12s ease infinite;
+margin:0;
+font-family:"Segoe UI",sans-serif;
+background:#f7f6fa;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
-overflow:hidden;
+min-height:100vh;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-.screen{
-display:none;
-flex-direction:column;
-align-items:center;
-text-align:center;
-}
-
-.active{
-display:flex;
-}
-
-.logo{
-width:140px;
-margin-bottom:20px;
-animation:logoFloat 3s ease-in-out infinite;
-}
-
-@keyframes logoFloat{
-0%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-100%{transform:translateY(0)}
+.app{
+width:400px;
+max-width:95%;
 }
 
 .card{
-
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
-padding:40px;
+background:white;
+padding:25px;
 border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-width:320px;
-
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
+text-align:center;
 }
 
-h1{
+.logo{
+width:85px;
 margin-bottom:10px;
 }
 
-input{
-
-margin-top:20px;
+.option{
+background:#f3f3f3;
+margin:8px 0;
 padding:12px;
-border:none;
-border-radius:8px;
-width:100%;
-font-size:16px;
-
+border-radius:12px;
+cursor:pointer;
+transition:0.25s;
 }
+
+.option:hover{transform:scale(1.04)}
+
+.correct{background:#c8f7c5}
+.wrong{background:#ffd0d0}
+
+.hidden{display:none}
 
 button{
-
-margin-top:20px;
-padding:12px 25px;
+padding:12px 22px;
 border:none;
-border-radius:10px;
-font-size:16px;
-background:#ff7a18;
-color:white;
+border-radius:30px;
 cursor:pointer;
-transition:0.3s;
-
+font-size:15px;
 }
 
-button:hover{
+.primary{
+background:#4fd1c5;
+color:white;
+}
 
-transform:scale(1.08);
+.share{
+background:#25D366;
+color:white;
+margin-top:10px;
+}
 
+.rating{
+background:#6c63ff;
+color:white;
+margin-top:10px;
+position:relative;
+overflow:hidden;
+}
+
+.progress{
+height:8px;
+background:#eee;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.bar{
+height:8px;
+background:#4fd1c5;
+width:0%;
+border-radius:10px;
+transition:0.4s;
+}
+
+.explanation{
+font-size:14px;
+margin-top:10px;
+color:#555;
+}
+
+.star{
+position:absolute;
+color:gold;
+font-size:12px;
+animation:starburst 800ms forwards;
+pointer-events:none;
+}
+
+@keyframes starburst{
+0%{opacity:1;transform:translate(0,0) scale(1)}
+100%{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}
 }
 
 </style>
-
 </head>
 
 <body>
 
+<div class="app">
 
-<!-- INTRO -->
+<div id="nameScreen" class="card">
 
-<div id="intro" class="screen active">
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
 
-<img class="logo" src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png">
+<h3>Enter Your Name</h3>
 
-<h1>Tushar Tuition Classes</h1>
+<input id="username" placeholder="Your name"
+style="padding:10px;width:90%;border-radius:8px;border:1px solid #ccc">
 
-<p>Concept Based Learning</p>
+<br><br>
 
-</div>
-
-
-<!-- NAME SCREEN -->
-
-<div id="nameScreen" class="screen">
-
-<div class="card">
-
-<h2>Enter Your Name</h2>
-
-<input id="name" placeholder="Your name">
-
-<button onclick="saveName()">Continue</button>
-
-</div>
+<button class="primary" onclick="startWelcome()">Continue</button>
 
 </div>
 
 
-<!-- WELCOME -->
+<div id="welcomeScreen" class="card hidden">
 
-<div id="welcome" class="screen">
-
-<div class="card">
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
 
 <h2 id="welcomeText"></h2>
 
-<p>Ready to start today's quiz?</p>
+<div>English – Tenses Quiz</div>
 
-<button onclick="startQuiz()">Start Quiz</button>
+<br>
+
+<button class="primary" onclick="startQuiz()">Start Quiz</button>
+
+</div>
+
+
+<div id="quizScreen" class="card hidden">
+
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
+
+<div class="progress">
+<div class="bar" id="progressBar"></div>
+</div>
+
+<h3 id="question"></h3>
+
+<div id="options"></div>
+
+<div id="explanation" class="explanation"></div>
+
+<br>
+
+<button id="nextBtn" class="primary hidden" onclick="nextQuestion()">
+Next Question
+</button>
+
+</div>
+
+
+<div id="resultScreen" class="card hidden">
+
+<img src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png" class="logo">
+
+<h2 id="scoreText"></h2>
+
+<div id="message"></div>
+
+<br>
+
+<button class="share" onclick="shareWhatsApp()">Share on WhatsApp</button>
+
+<button id="ratingBtn" class="rating">
+Click Me
+</button>
+
+<br><br>
+
+<button class="primary" onclick="restartQuiz()">Restart Quiz</button>
+
+<br><br>
+
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-e87fdd6e-f4b8-4807-89b4-ecc80ca4f3c0" data-elfsight-app-lazy></div>
 
 </div>
 
 </div>
 
-
+<!-- Hidden certificate canvas -->
+<canvas id="certificateCanvas" width="800" height="500" style="display:none"></canvas>
 
 <script>
 
-let student=""
+const subjectName="English"
+const chapterName="Tenses"
 
-/* intro timer */
+let username=localStorage.getItem("ttc_name") || ""
 
-setTimeout(()=>{
-
-document.getElementById("intro").classList.remove("active")
-document.getElementById("nameScreen").classList.add("active")
-
-},2500)
-
-
-
-function saveName(){
-
-student=document.getElementById("name").value
-
-if(student=="") student="Student"
-
-document.getElementById("welcomeText").innerText="Welcome "+student+" 👋"
-
-document.getElementById("nameScreen").classList.remove("active")
-document.getElementById("welcome").classList.add("active")
-
+if(username){
+document.getElementById("username").value=username
 }
 
+const quizData=[
+{
+question:"She ____ to school every day.",
+options:["go","goes","going","gone"],
+correctIndex:1,
+explanation:"'She' is third person singular, so we use 'goes'."
+},
+{
+question:"I ____ my homework yesterday.",
+options:["did","do","done","doing"],
+correctIndex:0,
+explanation:"'Yesterday' indicates past tense."
+},
+{
+question:"They ____ playing football.",
+options:["is","am","are","be"],
+correctIndex:2,
+explanation:"Plural subject requires 'are'."
+},
+{
+question:"We ____ dinner now.",
+options:["eat","eats","are eating","ate"],
+correctIndex:2,
+explanation:"'Now' indicates present continuous."
+},
+{
+question:"He ____ a movie tomorrow.",
+options:["watch","watched","will watch","watching"],
+correctIndex:2,
+explanation:"Future tense uses 'will watch'."
+}
+]
 
+let questions=[]
+let index=0
+let score=0
+
+function shuffle(arr){
+return arr.sort(()=>Math.random()-0.5)
+}
+
+function startWelcome(){
+
+username=document.getElementById("username").value
+
+if(!username)return
+
+localStorage.setItem("ttc_name",username)
+
+document.getElementById("nameScreen").classList.add("hidden")
+document.getElementById("welcomeScreen").classList.remove("hidden")
+
+document.getElementById("welcomeText").innerText=
+"Welcome, TTC Champ "+username
+
+}
 
 function startQuiz(){
 
-alert("Quiz Starts Here")
+document.getElementById("welcomeScreen").classList.add("hidden")
+document.getElementById("quizScreen").classList.remove("hidden")
+
+questions=shuffle([...quizData])
+
+loadQuestion()
 
 }
+
+function loadQuestion(){
+
+let q=questions[index]
+
+document.getElementById("question").innerText=q.question
+
+let opts=shuffle([...q.options])
+
+let container=document.getElementById("options")
+container.innerHTML=""
+
+opts.forEach(opt=>{
+
+let div=document.createElement("div")
+
+div.className="option"
+div.innerText=opt
+
+div.onclick=()=>selectOption(div,opt,q)
+
+container.appendChild(div)
+
+})
+
+document.getElementById("explanation").innerText=""
+document.getElementById("nextBtn").classList.add("hidden")
+
+document.getElementById("progressBar").style.width=
+(index/questions.length*100)+"%"
+
+}
+
+function selectOption(el,opt,q){
+
+let options=document.querySelectorAll(".option")
+
+options.forEach(o=>o.onclick=null)
+
+let correct=q.options[q.correctIndex]
+
+if(opt===correct){
+
+el.classList.add("correct")
+score++
+
+confetti({particleCount:80,spread:60})
+
+}else{
+
+el.classList.add("wrong")
+
+options.forEach(o=>{
+if(o.innerText===correct) o.classList.add("correct")
+})
+
+}
+
+document.getElementById("explanation").innerText=
+"Explanation: "+q.explanation
+
+document.getElementById("nextBtn").classList.remove("hidden")
+
+}
+
+function nextQuestion(){
+
+index++
+
+if(index>=questions.length){
+showResult()
+return
+}
+
+loadQuestion()
+
+}
+
+function showResult(){
+
+document.getElementById("quizScreen").classList.add("hidden")
+document.getElementById("resultScreen").classList.remove("hidden")
+
+document.getElementById("scoreText").innerText=
+score+" / "+questions.length
+
+let percent=(score/questions.length)*100
+
+let feedback=""
+
+if(percent>=90) feedback="Excellent performance!"
+else if(percent>=75) feedback="Very Good!"
+else if(percent>=50) feedback="Needs Practice."
+else feedback="Revise the chapter."
+
+document.getElementById("message").innerText=
+feedback+" Well done "+username+"!"
+
+confetti({particleCount:200,spread:120})
+
+generateCertificate()
+
+}
+
+function generateCertificate(){
+
+let canvas=document.getElementById("certificateCanvas")
+let ctx=canvas.getContext("2d")
+
+ctx.fillStyle="#ffffff"
+ctx.fillRect(0,0,800,500)
+
+ctx.strokeStyle="#4fd1c5"
+ctx.lineWidth=8
+ctx.strokeRect(20,20,760,460)
+
+ctx.font="bold 40px Arial"
+ctx.textAlign="center"
+ctx.fillText("Tushar Tuition Classes",400,120)
+
+ctx.font="28px Arial"
+ctx.fillText("Quiz Achievement",400,170)
+
+ctx.font="24px Arial"
+ctx.fillText("Student: "+username,400,250)
+
+ctx.fillText("Subject: "+subjectName,400,290)
+
+ctx.fillText("Chapter: "+chapterName,400,330)
+
+ctx.font="bold 30px Arial"
+ctx.fillText("Score: "+score+"/"+questions.length,400,400)
+
+let logo=new Image()
+logo.src="https://i.ibb.co/dsBdtCwK/Ttc-logo.png"
+
+logo.onload=function(){
+ctx.drawImage(logo,350,30,100,80)
+}
+
+}
+
+function shareWhatsApp(){
+
+let canvas=document.getElementById("certificateCanvas")
+
+let image=canvas.toDataURL("image/png")
+
+let link=document.createElement("a")
+link.href=image
+link.download="TTC_Quiz_Certificate.png"
+link.click()
+
+let message=
+`TTC Quiz Result
+
+Student Name: ${username}
+
+Subject: ${subjectName}
+
+Chapter: ${chapterName}
+
+Quiz Score: ${score}/${questions.length}`
+
+let url="https://wa.me/?text="+encodeURIComponent(message)
+
+window.open(url)
+
+}
+
+function restartQuiz(){
+location.reload()
+}
+
+document.getElementById("ratingBtn").addEventListener("click",function(e){
+
+for(let i=0;i<12;i++){
+
+let star=document.createElement("div")
+star.className="star"
+star.innerText="★"
+
+let x=(Math.random()*120-60)+"px"
+let y=(Math.random()*-120)+"px"
+
+star.style.setProperty("--x",x)
+star.style.setProperty("--y",y)
+
+star.style.left="50%"
+star.style.top="50%"
+
+this.appendChild(star)
+
+setTimeout(()=>star.remove(),800)
+
+}
+
+setTimeout(()=>{
+window.open("https://g.page/r/CdUkswJ0ZulAEBE/review")
+},300)
+
+})
 
 </script>
 
 </body>
-</html>
+  </html>
