@@ -606,6 +606,19 @@
   }
   .rs-stars { color: #FFD166; font-size: 1.2rem; letter-spacing: 2px; }
   .rs-google { width: 20px; height: 20px; }
+  
+  .famewall-scroll-wrap {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--coral) #ffebeb;
+  }
+  .famewall-scroll-wrap::-webkit-scrollbar { width: 6px; }
+  .famewall-scroll-wrap::-webkit-scrollbar-track { background: #ffebeb; border-radius: 10px; }
+  .famewall-scroll-wrap::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 10px; }
+
   .review-cta-modern {
     background: linear-gradient(135deg, var(--coral), var(--summer-orange));
     border-radius: 20px; padding: 30px 40px; text-align: center;
@@ -1706,7 +1719,9 @@
       </div>
 
       <!-- Famewall Embed Code -->
-      <div class="famewall-embed" data-src="https---maps-app-goo-gl-CCkEWRVgjbvHpQmLA" data-format="grid" style="width:100%;min-height:300px;"></div>
+      <div class="famewall-scroll-wrap">
+        <div class="famewall-embed" data-src="https---maps-app-goo-gl-CCkEWRVgjbvHpQmLA" data-format="grid" style="width:100%;min-height:300px;"></div>
+      </div>
       <script type="text/javascript" src="https://embed.famewall.io/frame.js" defer></script>
       
     </div>
