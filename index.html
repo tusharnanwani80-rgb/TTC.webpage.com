@@ -4,6 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TTC Wardha – Tushar Tuition Classes</title>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAOVqth0GlgRChUUF7hseYSkoZThT0E8AM",
+    authDomain: "ttc-wardha.firebaseapp.com",
+    projectId: "ttc-wardha",
+    storageBucket: "ttc-wardha.firebasestorage.app",
+    messagingSenderId: "547414290064",
+    appId: "1:547414290064:web:44f3716339ce51177d3215",
+    measurementId: "G-BFM2ZELW15"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&family=Pacifico&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -555,17 +580,51 @@
   .faq-batch span { color: var(--muted); }
   .faq-batch-note { color: var(--coral) !important; font-weight: 700; font-size: 0.78rem !important; margin-top: 6px; background: var(--coral-light); padding: 3px 8px; border-radius: 20px; display: inline-block; }
  
-  /* ─── REVIEWS ─── */
-  #reviews { background: white; }
-  .review-card-placeholder {
-    background: var(--bg); border-radius: 16px; padding: 24px;
-    max-width: 280px; flex: 1 1 220px; border: 2px solid #f0ece8;
-    transition: transform .25s, border-color .25s;
+  /* ─── NEW WOW FACTOR REVIEWS SECTION ─── */
+  #reviews {
+    background: linear-gradient(180deg, #ffffff 0%, #fffcf5 100%);
+    position: relative; overflow: hidden; padding-bottom: 100px;
   }
-  .review-card-placeholder:hover { transform: translateY(-4px); border-color: var(--coral); }
-  .rcp-stars { font-size: 1.1rem; margin-bottom: 10px; }
-  .rcp-text { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
-  .rcp-name { font-weight: 800; font-size: 0.82rem; color: var(--text); }
+  .review-bg-blob {
+    position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,179,71,0.15) 0%, rgba(255,107,107,0) 70%);
+    top: -200px; right: -200px; border-radius: 50%; z-index: 0;
+  }
+  .reviews-container {
+    position: relative; z-index: 2;
+    background: white; border-radius: 24px; padding: 30px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.06);
+    border: 1px solid rgba(255,107,107,0.1); margin-top: 40px;
+  }
+  .review-stats-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #ffffff, #fff0f0);
+    padding: 10px 20px; border-radius: 50px;
+    box-shadow: 0 8px 24px rgba(255,107,107,0.15);
+    margin-bottom: 30px; border: 1px solid #ffebeb;
+    font-weight: 800; font-size: 0.95rem; color: var(--text);
+  }
+  .rs-stars { color: #FFD166; font-size: 1.2rem; letter-spacing: 2px; }
+  .rs-google { width: 20px; height: 20px; }
+  .review-cta-modern {
+    background: linear-gradient(135deg, var(--coral), var(--summer-orange));
+    border-radius: 20px; padding: 30px 40px; text-align: center;
+    color: white; margin-top: 40px; position: relative; overflow: hidden;
+    box-shadow: 0 16px 40px rgba(255,107,107,0.25);
+  }
+  .review-cta-modern::before {
+    content: '⭐'; position: absolute; font-size: 120px; opacity: 0.15;
+    right: -20px; bottom: -30px; transform: rotate(-15deg);
+  }
+  .rcm-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; }
+  .rcm-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white; color: var(--coral); padding: 14px 32px;
+    border-radius: 50px; font-weight: 800; text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s; margin-top: 16px;
+    font-size: 1.05rem; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .rcm-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.15); }
  
   /* ─── CONTACT ─── */
   #contact { background: var(--bg); }
@@ -809,6 +868,7 @@
     /* Mobile tabs layout fix */
     .summer-tabs { flex-direction: row; gap: 8px; justify-content: stretch; }
     .summer-tab { padding: 10px; font-size: 0.8rem; flex: 1; text-align: center; }
+    .reviews-container { padding: 20px; }
   }
 </style>
 </head>
@@ -819,7 +879,7 @@
   <div class="ribbon-inner">
     <span class="ribbon-pulse"></span>
     <span class="ribbon-badge">🌞 New</span>
-    <span>TTC Summer Classes 2026 — Classes starting from <strong>15th April, 2026!</strong> Foundation &amp; Advanced Batches Available</span>
+    <span>TTC Summer Classes 2026 — Classes starting from <strong>5th May, 2026!</strong> Foundation &amp; Advanced Batches Available</span>
     <span style="opacity:0.7;font-size:0.75rem;">Click to know more ↓</span>
   </div>
 </div>
@@ -852,14 +912,14 @@
     <div class="hero-left">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        Now Enrolling • Classes 1–9
+        Now Enrolling • Classes 1–10
       </div>
       <h1 class="hero-title">
         Learn Better,<br>
         Grow <span>Smarter</span>
       </h1>
       <p class="hero-desc">
-        Tushar Tuition Classes in Wardha offers quality, personalized coaching for Classes 1–9 in Maths, Science, Languages, and more. Small batches, big results.
+        Tushar Tuition Classes in Wardha offers quality, personalized coaching for Classes 1–10 in Maths, Science, Languages, and more. Small batches, big results.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">📝 Enroll Today</a>
@@ -892,7 +952,7 @@
         <div class="hero-card hc-summer">
           <div class="hc-icon">☀️</div>
           <div class="hc-label">Summer Classes</div>
-          <div class="hc-sub">Starts 15th April!</div>
+          <div class="hc-sub">Starts 5th May!</div>
         </div>
         <div class="hero-card" style="background:linear-gradient(135deg,#4da6ff,#6366f1);color:white;width:190px;top:160px;right:-10px;animation-delay:2.5s;">
           <div class="hc-icon">📊</div>
@@ -1082,21 +1142,21 @@
     <div class="summer-header reveal">
       <div class="summer-tag">☀️ Limited Seats • Summer 2026</div>
       <h2 class="summer-title">TTC <span class="highlight">Summer Classes</span><br>Are Here!</h2>
-      <p class="summer-subtitle">Two specially designed programmes — Foundation for Class 1–6 and Advanced Gap-Filling for Class 7–9. Give your child the head-start they deserve this summer.</p>
+      <p class="summer-subtitle">Two specially designed programmes — Foundation for Class 1–6 and Advanced Gap-Filling for Class 7–10. Give your child the head-start they deserve this summer.</p>
       <div class="admission-banner">
         <span class="ab-icon">🗓️</span>
         <div class="ab-text">
           <strong>Classes Starting</strong>
           <span>Register your interest now!</span>
         </div>
-        <div class="ab-date">📅 15th April, 2026</div>
+        <div class="ab-date">📅 5th May, 2026</div>
       </div>
     </div>
  
     <!-- Tab Switcher -->
     <div class="summer-tabs reveal">
       <button class="summer-tab foundation active" onclick="switchTab('foundation')">🌱 Foundation Classes · Class 1–6</button>
-      <button class="summer-tab advanced" onclick="switchTab('advanced')">🚀 Advanced Classes · Class 7–9</button>
+      <button class="summer-tab advanced" onclick="switchTab('advanced')">🚀 Advanced Classes · Class 7–10</button>
     </div>
  
     <!-- FOUNDATION PANEL -->
@@ -1238,7 +1298,7 @@
           <div class="ph-title">TTC Advanced Classes</div>
           <div class="ph-desc">Specially designed for Class 7th and above to strengthen weak areas and fill critical learning gaps before the new academic year begins.</div>
         </div>
-        <div class="ph-badge">Class 7 – 9</div>
+        <div class="ph-badge">Class 7 – 10</div>
       </div>
       <div class="courses-grid">
  
@@ -1362,7 +1422,7 @@
  
     <!-- CTA -->
     <div class="summer-cta-wrap reveal">
-      <p>🗓️ Classes starting from <strong>15th April, 2026</strong> — Limited seats per batch!</p>
+      <p>🗓️ Classes starting from <strong>5th May, 2026</strong> — Limited seats per batch!</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
         <a href="#contact" class="btn-summer">📝 Pre-Register Interest</a>
         <a href="https://wa.me/917517445450" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
@@ -1455,7 +1515,7 @@
   <div class="section-inner">
     <div class="section-tag">🎒 Eligibility</div>
     <h2 class="section-title">Classes We Serve</h2>
-    <p class="section-desc">We welcome students from Class 1st through Class 9th.</p>
+    <p class="section-desc">We welcome students from Class 1st through Class 10th.</p>
     <div class="class-scroll">
       <div class="class-chip"><div class="chip-num">1<sup>st</sup></div><div class="chip-label">Class</div></div>
       <div class="class-chip"><div class="chip-num">2<sup>nd</sup></div><div class="chip-label">Class</div></div>
@@ -1466,12 +1526,13 @@
       <div class="class-chip"><div class="chip-num">7<sup>th</sup></div><div class="chip-label">Class</div></div>
       <div class="class-chip"><div class="chip-num">8<sup>th</sup></div><div class="chip-label">Class</div></div>
       <div class="class-chip"><div class="chip-num">9<sup>th</sup></div><div class="chip-label">Class</div></div>
+      <div class="class-chip"><div class="chip-num">10<sup>th</sup></div><div class="chip-label">Class</div></div>
     </div>
     <div class="info-cards reveal">
       <div class="info-stat-card"><span class="isc-icon">⏰</span><div class="isc-value">4 PM – 8 PM</div><div class="isc-label">Afternoon Timings</div></div>
       <div class="info-stat-card"><span class="isc-icon">📍</span><div class="isc-value">Wardha</div><div class="isc-label">Maharashtra, India</div></div>
       <div class="info-stat-card"><span class="isc-icon">🏫</span><div class="isc-value">STATE · CBSE · ICSE</div><div class="isc-label">Boards Covered</div></div>
-      <div class="info-stat-card"><span class="isc-icon">📚</span><div class="isc-value">1st – 9th</div><div class="isc-label">Standards Covered</div></div>
+      <div class="info-stat-card"><span class="isc-icon">📚</span><div class="isc-value">1st – 10th</div><div class="isc-label">Standards Covered</div></div>
     </div>
   </div>
 </section>
@@ -1510,7 +1571,7 @@
  
       <div class="faq-item">
         <div class="faq-q">Which classes do you teach? <span class="faq-chevron">▾</span></div>
-        <div class="faq-a">We teach students from Class 1st to Class 9th across all major boards.</div>
+        <div class="faq-a">We teach students from Class 1st to Class 10th across all major boards.</div>
       </div>
  
       <div class="faq-item">
@@ -1520,7 +1581,7 @@
  
       <div class="faq-item">
         <div class="faq-q">☀️ Tell me about Summer Classes? <span class="faq-chevron">▾</span></div>
-        <div class="faq-a">TTC offers two summer programmes: <strong>Foundation Classes</strong> for Class 1–6 (reading, handwriting, basic maths, grammar) and <strong>Advanced Classes</strong> for Class 7–9 (answer writing, maths fundamentals, science basics, grammar). Classes starting from <strong>15th April, 2026</strong>. Fees range from ₹500 to ₹800 per course depending on the subject. We also offer Combo Discounts if you enroll in multiple subjects!</div>
+        <div class="faq-a">TTC offers two summer programmes: <strong>Foundation Classes</strong> for Class 1–6 (reading, handwriting, basic maths, grammar) and <strong>Advanced Classes</strong> for Class 7–10 (answer writing, maths fundamentals, science basics, grammar). Classes starting from <strong>5th May, 2026</strong>. Fees range from ₹500 to ₹800 per course depending on the subject. We also offer Combo Discounts if you enroll in multiple subjects!</div>
       </div>
  
       <div class="faq-item">
@@ -1619,21 +1680,46 @@
   </div>
 </section>
  
-<!-- REVIEWS -->
+<!-- REVIEWS: PARENT FEEDBACK WITH FAMEWALL WIDGET -->
 <section id="reviews">
+  <div class="review-bg-blob"></div>
   <div class="section-inner">
-    <div class="section-tag reveal">⭐ Reviews</div>
-    <h2 class="section-title reveal">What Parents Say</h2>
-    <p class="section-desc reveal" style="margin:auto;">Real feedback from families who trust TTC Wardha.</p>
-    <div class="reveal" style="margin-top:36px;min-height:260px;">
-      <script src="https://elfsightcdn.com/platform.js" async></script>
-      <div class="elfsight-app-e87fdd6e-f4b8-4807-89b4-ecc80ca4f3c0" data-elfsight-app-lazy></div>
-      <div id="review-placeholder" style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:10px;">
-        <div class="review-card-placeholder"><div class="rcp-stars">⭐⭐⭐⭐⭐</div><div class="rcp-text">"Excellent teaching quality. My child's marks improved significantly!"</div><div class="rcp-name">— Parent, Wardha</div></div>
-        <div class="review-card-placeholder"><div class="rcp-stars">⭐⭐⭐⭐⭐</div><div class="rcp-text">"Very dedicated teachers. My daughter loves going to TTC."</div><div class="rcp-name">— Parent, Wardha</div></div>
-        <div class="review-card-placeholder"><div class="rcp-stars">⭐⭐⭐⭐⭐</div><div class="rcp-text">"Best tuition classes in Wardha. Highly recommended!"</div><div class="rcp-name">— Parent, Wardha</div></div>
-      </div>
+    
+    <!-- Title Area -->
+    <div style="text-align: center; position: relative; z-index: 2;">
+      <div class="section-tag reveal">⭐ Parent Feedback</div>
+      <h2 class="section-title reveal">What TTC Families Say</h2>
+      <p class="section-desc reveal" style="margin:auto;">Don't just take our word for it. Here's what parents and students think about their journey with TTC Wardha.</p>
     </div>
+
+    <!-- The Showcase Container -->
+    <div class="reviews-container reveal">
+      
+      <!-- Trust Badge -->
+      <div style="text-align: center;">
+        <div class="review-stats-badge">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="rs-google">
+          <span>5.0</span>
+          <span class="rs-stars">★★★★★</span>
+          <span>Google Reviews</span>
+        </div>
+      </div>
+
+      <!-- Famewall Embed Code -->
+      <div class="famewall-embed" data-src="https---maps-app-goo-gl-CCkEWRVgjbvHpQmLA" data-format="grid" style="width:100%;min-height:300px;"></div>
+      <script type="text/javascript" src="https://embed.famewall.io/frame.js" defer></script>
+      
+    </div>
+
+    <!-- The Review CTA Block -->
+    <div class="review-cta-modern reveal">
+      <div class="rcm-title">Love TTC? Share your experience!</div>
+      <p style="font-size: 0.95rem; opacity: 0.9; margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">Your feedback helps other parents find us and motivates our teachers to keep giving their best every single day.</p>
+      <a href="https://g.page/r/CdUkswJ0ZulAEBE/review" target="_blank" rel="noopener" class="rcm-btn">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width:18px;"> Write a Google Review
+      </a>
+    </div>
+
   </div>
 </section>
  
@@ -1649,8 +1735,8 @@
         </p>
         <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-text"><strong>Location</strong><span>Wardha, Maharashtra, India</span></div></div>
         <div class="ci-item"><div class="ci-icon">⏰</div><div class="ci-text"><strong>Class Timings</strong><span>4:00 PM – 8:00 PM, Mon–Sat</span></div></div>
-        <div class="ci-item"><div class="ci-icon">🎒</div><div class="ci-text"><strong>Classes Available</strong><span>1st Standard to 9th Standard</span></div></div>
-        <div class="ci-item"><div class="ci-icon">☀️</div><div class="ci-text"><strong>Summer Classes</strong><span>Classes starting from 15th April, 2026</span></div></div>
+        <div class="ci-item"><div class="ci-icon">🎒</div><div class="ci-text"><strong>Classes Available</strong><span>1st Standard to 10th Standard</span></div></div>
+        <div class="ci-item"><div class="ci-icon">☀️</div><div class="ci-text"><strong>Summer Classes</strong><span>Classes starting from 5th May, 2026</span></div></div>
       </div>
       <div class="contact-form reveal">
         <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
@@ -1670,6 +1756,7 @@
                 <option>Class 1</option><option>Class 2</option><option>Class 3</option>
                 <option>Class 4</option><option>Class 5</option><option>Class 6</option>
                 <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+                <option>Class 10</option>
               </select>
             </div>
           </div>
@@ -1682,7 +1769,7 @@
               <option value="">Select Programme</option>
               <option>Regular Classes</option>
               <option>Summer Foundation Classes (Class 1–6)</option>
-              <option>Summer Advanced Classes (Class 7–9)</option>
+              <option>Summer Advanced Classes (Class 7–10)</option>
               <option>Both Regular + Summer</option>
             </select>
           </div>
@@ -1719,8 +1806,8 @@
         <h4>Info</h4>
         <a href="#">📍 Wardha, Maharashtra</a>
         <a href="#">⏰ 4 PM – 8 PM</a>
-        <a href="#">📚 Class 1 to 9</a>
-        <a href="#">☀️ Summer Classes: 15th April</a>
+        <a href="#">📚 Class 1 to 10</a>
+        <a href="#">☀️ Summer Classes: 5th May</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1820,17 +1907,6 @@ if (device) {
     device.style.transform = `perspective(1200px) rotateX(${8 - progress * 8}deg)`;
   });
 }
- 
-// ── ELFSIGHT PLACEHOLDER HIDE ──
-setTimeout(() => {
-  const widget = document.querySelector('.elfsight-app-e87fdd6e-f4b8-4807-89b4-ecc80ca4f3c0');
-  const placeholder = document.getElementById('review-placeholder');
-  if (widget && placeholder && widget.innerHTML.trim().length > 80) {
-    placeholder.style.transition = 'opacity 0.5s';
-    placeholder.style.opacity = '0';
-    setTimeout(() => placeholder.style.display = 'none', 500);
-  }
-}, 5000);
  
 // ── FORMSPREE AJAX ──
 function resetForm() {
