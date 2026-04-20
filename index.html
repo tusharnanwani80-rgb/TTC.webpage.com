@@ -5,15 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TTC Wardha – Tushar Tuition Classes</title>
 
+<!-- 🔴 FREE GOOGLE ANALYTICS CODE 🔴 -->
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyAOVqth0GlgRChUUF7hseYSkoZThT0E8AM",
     authDomain: "ttc-wardha.firebaseapp.com",
@@ -24,7 +20,6 @@
     measurementId: "G-BFM2ZELW15"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
@@ -111,6 +106,20 @@
   .nav-brand img { width: 44px; height: 44px; border-radius: 12px; object-fit: contain; }
   .nav-brand-text { font-weight: 800; font-size: 1.1rem; color: var(--coral); letter-spacing: -0.3px; }
   .nav-brand-sub { font-size: 0.72rem; color: var(--muted); font-weight: 600; }
+  
+  /* Hamburger Icon */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 5px; z-index: 101;
+  }
+  .hamburger span {
+    width: 25px; height: 3px; background: var(--text);
+    border-radius: 3px; transition: all 0.3s;
+  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
   .nav-links { display: flex; gap: 6px; align-items: center; }
   .nav-links a {
     text-decoration: none; font-weight: 700; font-size: 0.88rem;
@@ -223,7 +232,6 @@
   .hc-main { background: white; width: 280px; top: 50px; left: 40px; animation-delay: 0s; }
   .hc-2 { background: var(--coral); color: white; width: 220px; top: 0; right: 0; animation-delay: 1.5s; }
   .hc-3 { background: var(--sky); color: white; width: 200px; bottom: 40px; right: 20px; animation-delay: 3s; }
-  /* Summer card floating */
   .hc-summer {
     background: linear-gradient(135deg, #FF8C42, #FFD166);
     color: white; width: 180px; bottom: 0; left: 20px; animation-delay: 2s;
@@ -250,6 +258,251 @@
     font-weight: 900; color: var(--text); margin-bottom: 12px; line-height: 1.2;
   }
   .section-desc { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+ 
+  /* ══════════════════════════════════════════════════
+     ─── DIGITAL TOOLS SECTION ───
+  ══════════════════════════════════════════════════ */
+  #digital {
+    background: linear-gradient(170deg, #f0f6ff 0%, #fdf6f0 60%, #f5fff8 100%);
+    position: relative; padding: 100px 40px;
+  }
+  .dg-deco-wrap {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+  }
+  .dg-deco {
+    position: absolute; border-radius: 50%; pointer-events: none; opacity: 0.07;
+  }
+  .dg-d1 { width: 380px; height: 380px; background: var(--sky); top: -100px; left: -80px; }
+  .dg-d2 { width: 300px; height: 300px; background: var(--coral); bottom: -80px; right: -60px; }
+  .dg-d3 { width: 200px; height: 200px; background: var(--mint); top: 40%; right: 10%; }
+ 
+  .digital-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 2; }
+  .digital-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--sky), var(--purple));
+    color: white; font-size: 0.82rem; font-weight: 900; padding: 8px 20px;
+    border-radius: 40px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(77,166,255,0.3);
+  }
+  .digital-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+    color: var(--text); line-height: 1.15; margin-bottom: 14px;
+  }
+  .digital-title .dh { color: var(--sky); }
+  .digital-subtitle { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 560px; margin: 0 auto; }
+ 
+  /* Feature Cards Grid */
+  .digital-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    max-width: 1080px; margin: 0 auto; position: relative; z-index: 2;
+  }
+  .digital-card {
+    background: white; border-radius: 24px; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.09);
+    border: 1.5px solid rgba(255,255,255,0.9);
+    transition: transform .3s, box-shadow .3s;
+    display: flex; flex-direction: column;
+  }
+  .digital-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.14); }
+ 
+  .dc-visual {
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .dc-visual.dashboard-bg {
+    background: linear-gradient(135deg, #4da6ff 0%, #6366f1 100%);
+    padding: 32px 28px 0; min-height: 260px;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .dc-visual.quiz-bg {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
+    padding: 32px 28px; min-height: 260px;
+    display: flex; align-items: center; justify-content: center;
+  }
+ 
+  /* Phone Mockup */
+  .phone-mockup {
+    width: 160px; flex-shrink: 0;
+    background: #1a1a2e; border-radius: 22px 22px 0 0;
+    border: 3px solid rgba(255,255,255,0.25); border-bottom: none;
+    padding: 10px 8px 0; box-shadow: 0 -8px 40px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .phone-notch {
+    width: 44px; height: 8px; background: #0d0d1a;
+    border-radius: 0 0 8px 8px; margin: 0 auto 6px;
+  }
+  .phone-screen {
+    background: #f5f4ff; border-radius: 12px 12px 0 0;
+    overflow: hidden; min-height: 180px;
+  }
+  .ps-header {
+    background: #ff6b35; padding: 8px 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .ps-logo { width: 18px; height: 18px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 9px; }
+  .ps-htitle { font-size: 8px; font-weight: 900; color: white; font-family: 'Nunito', sans-serif; }
+  .ps-body { padding: 7px 8px; }
+  .ps-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px; }
+  .ps-stat { background: white; border-radius: 6px; padding: 5px 6px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .ps-stat-val { font-size: 10px; font-weight: 900; color: #111118; font-family: 'Nunito', sans-serif; }
+  .ps-stat-lbl { font-size: 7px; font-weight: 700; color: #6b7280; font-family: 'Nunito', sans-serif; }
+  .ps-hw-card { background: white; border-radius: 6px; padding: 5px 7px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); margin-bottom: 4px; }
+  .ps-hw-subj { font-size: 7px; font-weight: 900; color: #4da6ff; font-family: 'Nunito', sans-serif; }
+  .ps-hw-task { font-size: 7px; font-weight: 700; color: #1a1a2e; font-family: 'Nunito', sans-serif; line-height: 1.3; }
+  .ps-nav { background: white; padding: 5px 4px; display: flex; justify-content: space-around; border-top: 1px solid #f0f0f0; margin-top: 4px; }
+  .ps-nav-item { font-size: 7px; font-weight: 800; color: #6b7280; font-family: 'Nunito', sans-serif; text-align: center; display: flex; flex-direction: column; gap: 1px; }
+  .ps-nav-item.active { color: #ff6b35; }
+  .ps-nav-icon { font-size: 10px; }
+ 
+  /* Quiz Mockup */
+  .quiz-mockup {
+    background: white; border-radius: 18px; padding: 18px 16px;
+    width: 220px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  }
+  .qm-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .qm-subj { font-size: 11px; font-weight: 900; color: var(--coral); font-family: 'Nunito', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+  .qm-score { background: var(--coral-light); color: var(--coral); font-size: 11px; font-weight: 900; padding: 3px 10px; border-radius: 20px; font-family: 'Nunito', sans-serif; }
+  .qm-progress { height: 5px; background: #f0f0f0; border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
+  .qm-progress-fill { height: 100%; width: 40%; background: linear-gradient(90deg, var(--coral), var(--amber)); border-radius: 10px; }
+  .qm-question { font-size: 11px; font-weight: 800; color: var(--text); font-family: 'Nunito', sans-serif; line-height: 1.4; margin-bottom: 12px; }
+  .qm-opt { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 10px; margin-bottom: 5px; font-size: 10px; font-weight: 700; font-family: 'Nunito', sans-serif; border: 1.5px solid #eee; }
+  .qm-opt.correct { background: #e8fff8; border-color: #5de0b5; color: #059669; }
+  .qm-opt.wrong   { background: #fff0f0; border-color: var(--coral); color: var(--coral); }
+  .qm-opt.neutral { color: var(--muted); }
+  .qm-letter { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; flex-shrink: 0; }
+  .qm-opt.correct .qm-letter { background: #5de0b5; color: white; }
+  .qm-opt.wrong   .qm-letter { background: var(--coral); color: white; }
+  .qm-opt.neutral .qm-letter { background: #f0f0f0; color: var(--muted); }
+  .qm-expl { background: #fffbe6; border: 1.5px solid var(--amber); border-radius: 8px; padding: 6px 8px; margin-top: 8px; font-size: 9px; font-weight: 700; color: #92400e; font-family: 'Nunito', sans-serif; line-height: 1.4; }
+  .qm-expl-label { font-size: 8px; font-weight: 900; color: var(--amber); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+ 
+  /* Floating badges on visual */
+  .dc-float-badge {
+    position: absolute; background: white; border-radius: 40px; padding: 7px 14px;
+    display: flex; align-items: center; gap: 7px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-family: 'Nunito', sans-serif;
+    animation: float 4s ease-in-out infinite;
+  }
+  .dc-float-badge.fb-1 { top: 16px; right: 16px; animation-delay: 0s; }
+  .dc-float-badge.fb-2 { top: 16px; left: 16px; animation-delay: 1.5s; }
+  .dc-float-badge.fb-3 { bottom: 80px; right: 16px; animation-delay: 2.5s; }
+  .dc-float-badge.fb-4 { bottom: 80px; left: 16px; animation-delay: 3.5s; }
+  .dc-float-badge .fb-icon { font-size: 16px; }
+  .dc-float-badge .fb-text { font-size: 11px; font-weight: 900; color: var(--text); }
+  .dc-float-badge .fb-sub  { font-size: 9px; font-weight: 700; color: var(--muted); margin-top: 1px; }
+ 
+  /* Card Body */
+  .dc-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+  .dc-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.75rem; font-weight: 900; padding: 5px 12px;
+    border-radius: 30px; margin-bottom: 14px; letter-spacing: 0.5px;
+    text-transform: uppercase; align-self: flex-start;
+  }
+  .dc-badge.blue   { background: #eff6ff; color: var(--sky); }
+  .dc-badge.coral  { background: var(--coral-light); color: var(--coral); }
+  .dc-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
+  .dc-desc  { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; flex: 1; }
+  .dc-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .dc-feat { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; font-weight: 700; color: var(--text); }
+  .dc-feat-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dc-feat-dot.blue  { background: var(--sky); }
+  .dc-feat-dot.coral { background: var(--coral); }
+  .dc-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: 50px; border: none;
+    font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 800;
+    cursor: pointer; text-decoration: none; transition: all .25s; align-self: flex-start;
+  }
+  .dc-cta.sky   { background: var(--sky);   color: white; box-shadow: 0 6px 20px rgba(77,166,255,0.35); }
+  .dc-cta.coral { background: var(--coral); color: white; box-shadow: 0 6px 20px rgba(255,107,107,0.35); }
+  .dc-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+ 
+  /* ══════════════════════════════════════════════════
+     ─── CARDBOARD DEAL SECTION ───
+  ══════════════════════════════════════════════════ */
+  #deal-section {
+    height: 400vh; /* Scroll length for the animation */
+    position: relative;
+    background: radial-gradient(circle at top center, #ffffff 0%, var(--bg) 100%);
+  }
+  .cb-sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .cb-text-zone {
+    height: 40vh; display: flex; flex-direction: column;
+    justify-content: flex-end; align-items: center;
+    padding: 0 24px 2vh; text-align: center; position: relative; z-index: 10;
+  }
+  .cb-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid rgba(255, 107, 107, 0.2);
+    color: var(--coral); font-weight: 800; font-size: 0.8rem;
+    padding: 6px 18px; border-radius: 50px; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.05);
+  }
+  .cb-dot { width: 8px; height: 8px; background: var(--coral); border-radius: 50%; }
+  .cb-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; color: var(--text);
+  }
+  .cb-title span { color: var(--coral); font-style: italic; }
+  .cb-sub { font-size: 1.1rem; color: var(--muted); line-height: 1.5; font-weight: 600; max-width: 700px; }
+  
+  .cb-cards-zone {
+    height: 60vh; width: 100%; display: flex; justify-content: center; align-items: center; position: relative;
+    background: linear-gradient(to bottom, transparent 0%, rgba(226, 232, 240, 0.4) 100%);
+  }
+  .cb-card-slot {
+    position: relative; width: 240px; margin-left: -140px; will-change: transform, opacity;
+  }
+  .cb-card-slot:first-child { margin-left: 0; }
+  .cb-card-inner {
+    background: white; border-radius: 18px; padding: 10px;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03);
+    display: flex; flex-direction: column; align-items: center; cursor: pointer;
+    transform: rotate(var(--rot)); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  }
+  .cb-card-slot:hover { z-index: 100 !important; }
+  .cb-card-slot:hover .cb-card-inner {
+    transform: translateY(-40px) scale(1.15) rotate(0deg);
+    box-shadow: 0 30px 60px rgba(255, 107, 107, 0.2), 0 0 0 2px var(--coral);
+  }
+  .cb-card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; display: block; background: #f1f3f5; }
+  
+  .cb-cta-wrapper {
+    position: absolute; bottom: 4vh; left: 50%; transform: translateX(-50%) translateY(20px);
+    opacity: 0; pointer-events: none; transition: all 0.5s ease; z-index: 200;
+  }
+  .cb-cta-wrapper.visible { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+  .cb-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--text); color: #fff; text-decoration: none; font-weight: 800; font-size: 1.05rem;
+    padding: 16px 40px; border-radius: 50px; box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2); transition: all 0.3s ease; white-space: nowrap;
+  }
+  .cb-cta:hover { background: var(--coral); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3); color: white; }
+  .cb-progress-line { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: rgba(0,0,0,0.05); z-index: 100; }
+  .cb-progress-fill { height: 100%; background: var(--coral); width: 0%; }
+
+  /* Bottom CTA strip */
+  .digital-cta-strip {
+    max-width: 1080px; margin: 40px auto 0;
+    background: white; border-radius: 20px; padding: 28px 36px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+    position: relative; z-index: 2; flex-wrap: wrap;
+  }
+  .dcs-left .dcs-emoji { font-size: 2rem; margin-bottom: 6px; }
+  .dcs-left strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text); display: block; }
+  .dcs-left span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+  .dcs-actions { display: flex; gap: 12px; flex-wrap: wrap; }
  
   /* ══════════════════════════════════════════════════
      ─── SUMMER CLASSES SECTION ───
@@ -436,75 +689,195 @@
   }
   .summer-cta-wrap p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; font-weight: 600; }
  
-  /* ─── SUBJECTS ─── */
-  #subjects { background: white; }
-  .subjects-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 14px; margin-top: 40px;
+  /* ══════════════════════════════════════════════════
+     ─── TEACHERS: EDITORIAL FACULTY BOARD ───
+  ══════════════════════════════════════════════════ */
+  #teachers { background: var(--bg); text-align: center; padding-bottom: 60px; }
+  
+  .faculty-board {
+    display: flex;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.05);
+    margin-top: 50px;
+    border: 1px solid rgba(0,0,0,0.03);
+    position: relative;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .subject-pill {
-    background: var(--bg); border-radius: 14px; padding: 18px 14px;
-    text-align: center; font-weight: 800; font-size: 0.9rem; color: var(--text);
-    transition: all .25s; cursor: default; border: 2px solid transparent;
-    transform: translateY(20px); opacity: 0;
+  
+  .f-col {
+    flex: 1;
+    padding: 60px 40px;
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, box-shadow 0.6s ease, border-radius 0.4s ease;
+    background: transparent;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .subject-pill.visible { animation: pill-in .5s ease forwards; }
-  .subject-pill:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-4px) !important; background: var(--coral-light); }
-  .subject-pill .pill-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
-  @keyframes pill-in { to{opacity:1;transform:translateY(0)} }
+  
+  /* Vertical Dividers */
+  .f-col:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 20%; height: 60%; width: 1px;
+    background: #e2e8f0;
+    transition: opacity 0.3s;
+  }
+  
+  /* The Hover & Active Magic */
+  .faculty-board:hover .f-col {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  .faculty-board .f-col:hover {
+    opacity: 1;
+    transform: scale(1.08);
+    z-index: 10;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+  }
+  /* Active state makes it feel like a real clickable portal */
+  .faculty-board .f-col:active {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  /* Hide dividers on hover */
+  .faculty-board:hover .f-col::after { opacity: 0; }
+
+  /* Department Line */
+  .fc-dept {
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    transition: color 0.3s;
+  }
+  .fc-dept::before, .fc-dept::after {
+    content: ''; flex: 1; height: 2px; background: var(--light); transition: background 0.3s;
+  }
+  .c-coral:hover .fc-dept { color: var(--coral); }
+  .c-coral:hover .fc-dept::before, .c-coral:hover .fc-dept::after { background: var(--coral); }
+  .c-sky:hover .fc-dept { color: var(--sky); }
+  .c-sky:hover .fc-dept::before, .c-sky:hover .fc-dept::after { background: var(--sky); }
+  .c-amber:hover .fc-dept { color: var(--amber); }
+  .c-amber:hover .fc-dept::before, .c-amber:hover .fc-dept::after { background: var(--amber); }
+
+  /* Name Wrapper for Particles */
+  .fc-name-wrap {
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .fc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s;
+  }
+  
+  .c-coral:hover .fc-name { color: var(--coral); }
+  .c-sky:hover .fc-name { color: var(--sky); }
+  .c-amber:hover .fc-name { color: var(--amber); }
+
+  .fc-role { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 30px; transition: color 0.3s; }
+
+  .fc-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: auto; }
+  .fc-tag { font-size: 0.75rem; font-weight: 800; padding: 6px 14px; border-radius: 50px; background: var(--bg); color: var(--muted); border: 1.5px solid #eaeaea; transition: all 0.3s; }
+  
+  .c-coral:hover .fc-tag { background: var(--coral-light); color: var(--coral); border-color: rgba(255,107,107,0.3); }
+  .c-sky:hover .fc-tag { background: var(--sky-light); color: var(--sky); border-color: rgba(77,166,255,0.3); }
+  .c-amber:hover .fc-tag { background: #fffbe6; color: var(--amber); border-color: rgba(255,179,71,0.3); }
  
-  /* ─── TEACHERS ─── */
-  #teachers { background: var(--bg); }
-  .teachers-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-    gap: 24px; margin-top: 44px;
+  /* Hover Particle Animations - Smoothed Easing */
+  .t-particle {
+    position: absolute; top: 50%; left: 50%;
+    font-size: 1.5rem; font-weight: 900; font-family: 'Nunito', sans-serif;
+    pointer-events: none; opacity: 0;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    white-space: nowrap;
   }
-  .teacher-card {
-    background: white; border-radius: var(--radius); overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
-    transition: all .3s; border: 2px solid transparent;
-    transform: translateY(30px); opacity: 0;
+  .c-coral .t-particle { color: var(--coral); }
+  .c-sky .t-particle { color: var(--sky); font-size: 1rem; } 
+  .c-amber .t-particle { color: var(--amber); font-size: 1.8rem; }
+  
+  .f-col:hover .t-particle { animation: particle-burst 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .f-col:hover .t-particle.tp-1 { animation-delay: 0s; }
+  .f-col:hover .t-particle.tp-2 { animation-delay: 0.05s; }
+  .f-col:hover .t-particle.tp-3 { animation-delay: 0.1s; }
+  .f-col:hover .t-particle.tp-4 { animation-delay: 0.02s; }
+  .f-col:hover .t-particle.tp-5 { animation-delay: 0.08s; }
+  .f-col:hover .t-particle.tp-6 { animation-delay: 0.12s; }
+  
+  @keyframes particle-burst {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+    15% { opacity: 1; transform: translate(calc(-50% + var(--tx)*0.7), calc(-50% + var(--ty)*0.7)) scale(1.2) rotate(calc(var(--r)*0.5)); }
+    100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0.8) rotate(var(--r)); }
   }
-  .teacher-card.visible { animation: fade-up-card .6s ease forwards; }
-  .teacher-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.13); border-color: var(--coral-light); }
-  @keyframes fade-up-card { to{opacity:1;transform:translateY(0)} }
-  .teacher-banner { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 3.2rem; position: relative; }
-  .tc-1 .teacher-banner { background: linear-gradient(135deg, #ff9a9e, #ff6b6b); }
-  .tc-2 .teacher-banner { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-  .tc-3 .teacher-banner { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-  .teacher-avatar {
-    width: 72px; height: 72px; border-radius: 50%;
-    border: 4px solid white; position: absolute; bottom: -28px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; font-weight: 900; color: white;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  }
-  .tc-1 .teacher-avatar { background: var(--coral); }
-  .tc-2 .teacher-avatar { background: var(--purple); }
-  .tc-3 .teacher-avatar { background: var(--mint); }
-  .teacher-body { padding: 44px 24px 28px; text-align: center; }
-  .teacher-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 2px; }
-  .teacher-role { font-size: 0.8rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 16px; }
-  .teacher-subjects { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .subj-tag {
-    padding: 5px 12px; border-radius: 30px; font-size: 0.78rem; font-weight: 800; border: 1.5px solid;
-  }
-  .tc-1 .subj-tag { background: #fff0f0; color: var(--coral); border-color: rgba(255,107,107,0.25); }
-  .tc-2 .subj-tag { background: #f3f0ff; color: var(--purple); border-color: rgba(167,139,250,0.3); }
-  .tc-3 .subj-tag { background: #f0fff8; color: #10b981; border-color: rgba(93,224,181,0.35); }
  
-  /* ─── CLASSES ─── */
-  #classes { background: white; }
-  .class-scroll { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 10px; margin-top: 36px; scrollbar-width: none; }
-  .class-scroll::-webkit-scrollbar { display: none; }
-  .class-chip {
-    flex-shrink: 0; background: var(--bg); border-radius: 14px; padding: 18px 22px;
-    text-align: center; min-width: 100px; border: 2px solid transparent; cursor: default;
-    transition: all .25s;
+  /* ─── CLASSES: INTERACTIVE CAROUSEL ─── */
+  #classes { background: white; overflow: hidden; text-align: center; }
+  .carousel-wrap { position: relative; margin: 40px 0; display: flex; align-items: center; justify-content: center; }
+  .carousel-track {
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 40px calc(50% - 110px);
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    align-items: center; width: 100%;
   }
-  .class-chip:hover { border-color: var(--sky); background: var(--sky-light); transform: translateY(-4px); }
-  .class-chip .chip-num { font-size: 1.7rem; font-weight: 900; color: var(--text); }
-  .class-chip .chip-label { font-size: 0.72rem; color: var(--muted); font-weight: 700; text-transform: uppercase; margin-top: 2px; }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-card {
+    scroll-snap-align: center; flex: 0 0 220px; height: 260px;
+    background: var(--card-bg); border-radius: 24px; border: 2px solid #f0ece8;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: scale(0.85); opacity: 0.5; cursor: pointer;
+    position: relative; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .carousel-card.active {
+    transform: scale(1.15); opacity: 1; border-color: var(--coral);
+    box-shadow: 0 20px 50px rgba(255,107,107,0.2); z-index: 2;
+  }
+  .carousel-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%;
+    background: linear-gradient(135deg, var(--coral-light) 0%, transparent 100%);
+    opacity: 0; transition: opacity 0.4s; z-index: 0;
+  }
+  .carousel-card.active::before { opacity: 1; }
+  
+  .cc-num { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; color: var(--text); line-height: 1; margin-bottom: 8px; position: relative; z-index: 1; transition: color 0.3s; }
+  .carousel-card.active .cc-num { color: var(--coral); }
+  .cc-num sup { font-size: 1.5rem; font-family: 'Nunito', sans-serif; font-weight: 800; }
+  
+  .cc-lbl { font-weight: 900; font-size: 1.1rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; }
+  
+  .cc-tag { position: absolute; bottom: 20px; background: var(--white); border: 2px solid var(--light); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: var(--muted); transition: all 0.4s; z-index: 1; }
+  .carousel-card.active .cc-tag { border-color: var(--coral); color: var(--coral); background: var(--coral-light); }
+
+  /* Navigation Arrows */
+  .c-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: white; border: 2px solid var(--dark); box-shadow: 2px 2px 0 var(--dark); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 10; transition: all 0.2s; }
+  .c-btn:hover { background: var(--off); transform: translateY(-50%) translate(-2px, -2px); box-shadow: 4px 4px 0 var(--dark); }
+  .c-btn:active { transform: translateY(-50%) translate(0, 0); box-shadow: 0 0 0 var(--dark); }
+  .c-btn.prev { left: 20px; }
+  .c-btn.next { right: 20px; }
+
   .info-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
   .info-stat-card {
     background: white; border-radius: 16px; padding: 24px 20px;
@@ -689,177 +1062,33 @@
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
  
-  /* ─── DIGITAL TOOLS SECTION ─── */
-  #digital {
-    background: linear-gradient(170deg, #f0f6ff 0%, #fdf6f0 60%, #f5fff8 100%);
-    position: relative; overflow: hidden; padding: 100px 40px;
-  }
-  .dg-deco {
-    position: absolute; border-radius: 50%; pointer-events: none; opacity: 0.07;
-  }
-  .dg-d1 { width: 380px; height: 380px; background: var(--sky); top: -100px; left: -80px; }
-  .dg-d2 { width: 300px; height: 300px; background: var(--coral); bottom: -80px; right: -60px; }
-  .dg-d3 { width: 200px; height: 200px; background: var(--mint); top: 40%; right: 10%; }
- 
-  .digital-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 2; }
-  .digital-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, var(--sky), var(--purple));
-    color: white; font-size: 0.82rem; font-weight: 900; padding: 8px 20px;
-    border-radius: 40px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
-    box-shadow: 0 6px 20px rgba(77,166,255,0.3);
-  }
-  .digital-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
-    color: var(--text); line-height: 1.15; margin-bottom: 14px;
-  }
-  .digital-title .dh { color: var(--sky); }
-  .digital-subtitle { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 560px; margin: 0 auto; }
- 
-  /* Feature Cards Grid */
-  .digital-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-    max-width: 1080px; margin: 0 auto; position: relative; z-index: 2;
-  }
-  .digital-card {
-    background: white; border-radius: 24px; overflow: hidden;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.09);
-    border: 1.5px solid rgba(255,255,255,0.9);
-    transition: transform .3s, box-shadow .3s;
-    display: flex; flex-direction: column;
-  }
-  .digital-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.14); }
- 
-  .dc-visual {
-    position: relative; overflow: hidden; flex-shrink: 0;
-  }
-  .dc-visual.dashboard-bg {
-    background: linear-gradient(135deg, #4da6ff 0%, #6366f1 100%);
-    padding: 32px 28px 0; min-height: 260px;
-    display: flex; align-items: flex-end; justify-content: center;
-  }
-  .dc-visual.quiz-bg {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
-    padding: 32px 28px; min-height: 260px;
-    display: flex; align-items: center; justify-content: center;
-  }
- 
-  /* Phone Mockup */
-  .phone-mockup {
-    width: 160px; flex-shrink: 0;
-    background: #1a1a2e; border-radius: 22px 22px 0 0;
-    border: 3px solid rgba(255,255,255,0.25); border-bottom: none;
-    padding: 10px 8px 0; box-shadow: 0 -8px 40px rgba(0,0,0,0.4);
-    position: relative;
-  }
-  .phone-notch {
-    width: 44px; height: 8px; background: #0d0d1a;
-    border-radius: 0 0 8px 8px; margin: 0 auto 6px;
-  }
-  .phone-screen {
-    background: #f5f4ff; border-radius: 12px 12px 0 0;
-    overflow: hidden; min-height: 180px;
-  }
-  .ps-header {
-    background: #ff6b35; padding: 8px 10px; display: flex; align-items: center; gap: 6px;
-  }
-  .ps-logo { width: 18px; height: 18px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; font-size: 9px; }
-  .ps-htitle { font-size: 8px; font-weight: 900; color: white; font-family: 'Nunito', sans-serif; }
-  .ps-body { padding: 7px 8px; }
-  .ps-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px; }
-  .ps-stat { background: white; border-radius: 6px; padding: 5px 6px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .ps-stat-val { font-size: 10px; font-weight: 900; color: #111118; font-family: 'Nunito', sans-serif; }
-  .ps-stat-lbl { font-size: 7px; font-weight: 700; color: #6b7280; font-family: 'Nunito', sans-serif; }
-  .ps-hw-card { background: white; border-radius: 6px; padding: 5px 7px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); margin-bottom: 4px; }
-  .ps-hw-subj { font-size: 7px; font-weight: 900; color: #4da6ff; font-family: 'Nunito', sans-serif; }
-  .ps-hw-task { font-size: 7px; font-weight: 700; color: #1a1a2e; font-family: 'Nunito', sans-serif; line-height: 1.3; }
-  .ps-nav { background: white; padding: 5px 4px; display: flex; justify-content: space-around; border-top: 1px solid #f0f0f0; margin-top: 4px; }
-  .ps-nav-item { font-size: 7px; font-weight: 800; color: #6b7280; font-family: 'Nunito', sans-serif; text-align: center; display: flex; flex-direction: column; gap: 1px; }
-  .ps-nav-item.active { color: #ff6b35; }
-  .ps-nav-icon { font-size: 10px; }
- 
-  /* Quiz Mockup */
-  .quiz-mockup {
-    background: white; border-radius: 18px; padding: 18px 16px;
-    width: 220px; box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-  }
-  .qm-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-  .qm-subj { font-size: 11px; font-weight: 900; color: var(--coral); font-family: 'Nunito', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
-  .qm-score { background: var(--coral-light); color: var(--coral); font-size: 11px; font-weight: 900; padding: 3px 10px; border-radius: 20px; font-family: 'Nunito', sans-serif; }
-  .qm-progress { height: 5px; background: #f0f0f0; border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
-  .qm-progress-fill { height: 100%; width: 40%; background: linear-gradient(90deg, var(--coral), var(--amber)); border-radius: 10px; }
-  .qm-question { font-size: 11px; font-weight: 800; color: var(--text); font-family: 'Nunito', sans-serif; line-height: 1.4; margin-bottom: 12px; }
-  .qm-opt { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 10px; margin-bottom: 5px; font-size: 10px; font-weight: 700; font-family: 'Nunito', sans-serif; border: 1.5px solid #eee; }
-  .qm-opt.correct { background: #e8fff8; border-color: #5de0b5; color: #059669; }
-  .qm-opt.wrong   { background: #fff0f0; border-color: var(--coral); color: var(--coral); }
-  .qm-opt.neutral { color: var(--muted); }
-  .qm-letter { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900; flex-shrink: 0; }
-  .qm-opt.correct .qm-letter { background: #5de0b5; color: white; }
-  .qm-opt.wrong   .qm-letter { background: var(--coral); color: white; }
-  .qm-opt.neutral .qm-letter { background: #f0f0f0; color: var(--muted); }
-  .qm-expl { background: #fffbe6; border: 1.5px solid var(--amber); border-radius: 8px; padding: 6px 8px; margin-top: 8px; font-size: 9px; font-weight: 700; color: #92400e; font-family: 'Nunito', sans-serif; line-height: 1.4; }
-  .qm-expl-label { font-size: 8px; font-weight: 900; color: var(--amber); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
- 
-  /* Floating badges on visual */
-  .dc-float-badge {
-    position: absolute; background: white; border-radius: 40px; padding: 7px 14px;
-    display: flex; align-items: center; gap: 7px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-family: 'Nunito', sans-serif;
-    animation: float 4s ease-in-out infinite;
-  }
-  .dc-float-badge.fb-1 { top: 16px; right: 16px; animation-delay: 0s; }
-  .dc-float-badge.fb-2 { top: 16px; left: 16px; animation-delay: 1.5s; }
-  .dc-float-badge.fb-3 { bottom: 80px; right: 16px; animation-delay: 2.5s; }
-  .dc-float-badge.fb-4 { bottom: 80px; left: 16px; animation-delay: 3.5s; }
-  .dc-float-badge .fb-icon { font-size: 16px; }
-  .dc-float-badge .fb-text { font-size: 11px; font-weight: 900; color: var(--text); }
-  .dc-float-badge .fb-sub  { font-size: 9px; font-weight: 700; color: var(--muted); margin-top: 1px; }
- 
-  /* Card Body */
-  .dc-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
-  .dc-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.75rem; font-weight: 900; padding: 5px 12px;
-    border-radius: 30px; margin-bottom: 14px; letter-spacing: 0.5px;
-    text-transform: uppercase; align-self: flex-start;
-  }
-  .dc-badge.blue   { background: #eff6ff; color: var(--sky); }
-  .dc-badge.coral  { background: var(--coral-light); color: var(--coral); }
-  .dc-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
-  .dc-desc  { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; flex: 1; }
-  .dc-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-  .dc-feat { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; font-weight: 700; color: var(--text); }
-  .dc-feat-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .dc-feat-dot.blue  { background: var(--sky); }
-  .dc-feat-dot.coral { background: var(--coral); }
-  .dc-cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 26px; border-radius: 50px; border: none;
-    font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 800;
-    cursor: pointer; text-decoration: none; transition: all .25s; align-self: flex-start;
-  }
-  .dc-cta.sky   { background: var(--sky);   color: white; box-shadow: 0 6px 20px rgba(77,166,255,0.35); }
-  .dc-cta.coral { background: var(--coral); color: white; box-shadow: 0 6px 20px rgba(255,107,107,0.35); }
-  .dc-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
- 
-  /* Bottom CTA strip */
-  .digital-cta-strip {
-    max-width: 1080px; margin: 40px auto 0;
-    background: white; border-radius: 20px; padding: 28px 36px;
-    display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.07);
-    position: relative; z-index: 2; flex-wrap: wrap;
-  }
-  .dcs-left .dcs-emoji { font-size: 2rem; margin-bottom: 6px; }
-  .dcs-left strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text); display: block; }
-  .dcs-left span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
-  .dcs-actions { display: flex; gap: 12px; flex-wrap: wrap; }
- 
-  /* ─── MOBILE ─── */
+  /* ─── MOBILE RESPONSIVENESS ─── */
   @media (max-width: 768px) {
-    nav { padding: 12px 20px; }
-    .nav-links { display: none; }
+    nav { flex-direction: row; align-items: center; padding: 14px 20px; }
+    .nav-brand { width: auto; }
+    
+    /* Hamburger & Mobile Menu Styling */
+    .hamburger { display: flex; }
+    .nav-links {
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      flex-direction: column; padding: 0; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      transition: clip-path 0.4s ease-in-out, padding 0.4s ease;
+      overflow: hidden; gap: 0;
+    }
+    .nav-links.show-menu { 
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      padding: 10px 20px 20px;
+    }
+    .nav-links a { 
+      width: 100%; text-align: left; padding: 14px 10px; font-size: 1.1rem; 
+      border-radius: 12px;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-visual { display: none; }
     section { padding: 60px 20px; }
@@ -868,8 +1097,11 @@
     .footer-top { grid-template-columns: 1fr; gap: 24px; }
     .device-inner { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .teachers-grid { grid-template-columns: 1fr; }
+    
+    /* Fix Digital Tools Mobile Stacking */
     .digital-grid { grid-template-columns: 1fr; }
+    .dc-visual { min-height: 220px; padding: 20px 10px 0; }
+    
     #digital { padding: 60px 20px; }
     .digital-cta-strip { flex-direction: column; text-align: center; padding: 24px 20px; }
     .dcs-actions { justify-content: center; }
@@ -878,11 +1110,138 @@
     .panel-header { flex-wrap: wrap; }
     .ph-badge { margin-left: 0; }
     .admission-banner { flex-wrap: wrap; text-align: center; justify-content: center; }
-    /* Mobile tabs layout fix */
     .summer-tabs { flex-direction: row; gap: 8px; justify-content: stretch; }
     .summer-tab { padding: 10px; font-size: 0.8rem; flex: 1; text-align: center; }
     .reviews-container { padding: 20px; }
+
+    /* Faculty Board Mobile Setup */
+    .faculty-board { flex-direction: column; border-radius: 32px; }
+    .f-col { padding: 40px 20px; }
+    .f-col:not(:last-child)::after { right: 15%; top: auto; bottom: 0; width: 70%; height: 1px; }
+    .faculty-board .f-col:hover { transform: scale(1.02); }
+
+    /* Carousel Mobile Adjustments */
+    .carousel-track { padding: 40px calc(50vw - 110px); }
+    .c-btn { display: none; }
   }
+
+  /* ─── CARDBOARD SPREAD SECTION ─── */
+  #deal-section {
+    height: 400vh;
+    position: relative;
+    background: radial-gradient(circle at top center, #ffffff 0%, var(--bg) 100%);
+    margin-top: 20px;
+  }
+  .cb-sticky-viewport {
+    position: sticky;
+    top: 0; height: 100vh; width: 100%; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .cb-text-zone {
+    height: 40vh; display: flex; flex-direction: column;
+    justify-content: flex-end; align-items: center;
+    padding: 0 24px 2vh; text-align: center; position: relative; z-index: 10;
+  }
+  .cb-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid rgba(255, 107, 107, 0.2);
+    color: var(--coral); font-weight: 800; font-size: 0.8rem;
+    padding: 6px 18px; border-radius: 50px; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.05);
+  }
+  .cb-dot { width: 8px; height: 8px; background: var(--coral); border-radius: 50%; }
+  .cb-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; color: var(--text);
+  }
+  .cb-title span { color: var(--coral); font-style: italic; }
+  .cb-sub { font-size: 1.1rem; color: var(--muted); line-height: 1.5; font-weight: 600; max-width: 700px; }
+  .cb-cards-zone {
+    height: 60vh; width: 100%; display: flex; justify-content: center; align-items: center; position: relative;
+    background: linear-gradient(to bottom, transparent 0%, rgba(226, 232, 240, 0.4) 100%);
+  }
+  .cb-card-slot { position: relative; width: 240px; margin-left: -140px; will-change: transform, opacity; }
+  .cb-card-slot:first-child { margin-left: 0; }
+  .cb-card-inner {
+    background: white; border-radius: 18px; padding: 10px;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03);
+    display: flex; flex-direction: column; align-items: center; cursor: pointer;
+    transform: rotate(var(--rot)); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  }
+  .cb-card-slot:hover { z-index: 100 !important; }
+  .cb-card-slot:hover .cb-card-inner {
+    transform: translateY(-40px) scale(1.15) rotate(0deg);
+    box-shadow: 0 30px 60px rgba(255, 107, 107, 0.2), 0 0 0 2px var(--coral);
+  }
+  .cb-card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; display: block; background: #f1f3f5; }
+  .cb-cta-wrapper {
+    position: absolute; bottom: 4vh; left: 50%; transform: translateX(-50%) translateY(20px);
+    opacity: 0; pointer-events: none; transition: all 0.5s ease; z-index: 200;
+  }
+  .cb-cta-wrapper.visible { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+  .cb-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--text); color: #fff; text-decoration: none; font-weight: 800; font-size: 1.05rem;
+    padding: 16px 40px; border-radius: 50px; box-shadow: 0 10px 30px rgba(26, 26, 46, 0.2); transition: all 0.3s ease; white-space: nowrap;
+  }
+  .cb-cta:hover { background: var(--coral); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3); color: white; }
+  .cb-progress-line { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: rgba(0,0,0,0.05); z-index: 100; }
+  .cb-progress-fill { height: 100%; background: var(--coral); width: 0%; }
+  
+  @media(max-width: 768px) {
+    .cb-text-zone { padding-top: 4vh; justify-content: center; }
+    .cb-title { margin-bottom: 8px; font-size: 2.1rem; }
+    .cb-sub { font-size: 0.95rem; }
+    .cb-card-slot { width: 45vw; margin-left: -38vw; }
+    .cb-cards-zone { align-items: flex-start; padding-top: 5vh; }
+  }
+
+  /* ─── CLASSES: INTERACTIVE CAROUSEL ─── */
+  #classes { background: white; overflow: hidden; text-align: center; }
+  .carousel-wrap { position: relative; margin: 40px 0; display: flex; align-items: center; justify-content: center; }
+  .carousel-track {
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 40px calc(50% - 110px);
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    align-items: center; width: 100%;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-card {
+    scroll-snap-align: center; flex: 0 0 220px; height: 260px;
+    background: var(--card-bg); border-radius: 24px; border: 2px solid #f0ece8;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: scale(0.85); opacity: 0.5; cursor: pointer;
+    position: relative; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .carousel-card.active {
+    transform: scale(1.15); opacity: 1; border-color: var(--coral);
+    box-shadow: 0 20px 50px rgba(255,107,107,0.2); z-index: 2;
+  }
+  .carousel-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%;
+    background: linear-gradient(135deg, var(--coral-light) 0%, transparent 100%);
+    opacity: 0; transition: opacity 0.4s; z-index: 0;
+  }
+  .carousel-card.active::before { opacity: 1; }
+  
+  .cc-num { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 900; color: var(--text); line-height: 1; margin-bottom: 8px; position: relative; z-index: 1; transition: color 0.3s; }
+  .carousel-card.active .cc-num { color: var(--coral); }
+  .cc-num sup { font-size: 1.5rem; font-family: 'Nunito', sans-serif; font-weight: 800; }
+  
+  .cc-lbl { font-weight: 900; font-size: 1.1rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; }
+  
+  .cc-tag { position: absolute; bottom: 20px; background: var(--white); border: 2px solid var(--light); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; color: var(--muted); transition: all 0.4s; z-index: 1; }
+  .carousel-card.active .cc-tag { border-color: var(--coral); color: var(--coral); background: var(--coral-light); }
+
+  /* Navigation Arrows */
+  .c-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: white; border: 2px solid var(--dark); box-shadow: 2px 2px 0 var(--dark); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 10; transition: all 0.2s; }
+  .c-btn:hover { background: var(--off); transform: translateY(-50%) translate(-2px, -2px); box-shadow: 4px 4px 0 var(--dark); }
+  .c-btn:active { transform: translateY(-50%) translate(0, 0); box-shadow: 0 0 0 var(--dark); }
+  .c-btn.prev { left: 20px; }
+  .c-btn.next { right: 20px; }
 </style>
 </head>
 <body>
@@ -906,9 +1265,17 @@
       <div class="nav-brand-sub">Tushar Tuition Classes</div>
     </div>
   </div>
-  <div class="nav-links">
-    <a href="#subjects">Subjects</a>
+  
+  <!-- Hamburger Menu Icon -->
+  <button class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="nav-links" id="nav-links">
     <a href="#teachers">Teachers</a>
+    <a href="#classes">Classes</a>
     <a href="#digital" style="color:var(--sky);font-weight:800;">📱 Digital Tools</a>
     <a href="#summer" class="nav-summer">☀️ Summer Classes</a>
     <a href="#faq">FAQ</a>
@@ -938,6 +1305,7 @@
         <a href="#contact" class="btn-primary">📝 Enroll Today</a>
         <a href="#summer" class="btn-summer">☀️ Summer Classes</a>
         <a href="#teachers" class="btn-secondary">👩‍🏫 Our Teachers</a>
+        <a href="#deal-section" class="btn-secondary" style="border-color: var(--amber); color: var(--amber);">🎁 Gifts from us</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><div class="stat-num">9+</div><div class="stat-label">Subjects</div></div>
@@ -980,13 +1348,14 @@
 <!-- ═══════════════════════════════════════════
      DIGITAL TOOLS SECTION
 ═══════════════════════════════════════════ -->
-<section id="digital">
-  <!-- Decorative blobs -->
-  <div class="dg-deco dg-d1"></div>
-  <div class="dg-deco dg-d2"></div>
-  <div class="dg-deco dg-d3"></div>
+<section id="digital" style="position: relative; padding-bottom: 0px; background: linear-gradient(170deg, #f0f6ff 0%, #fdf6f0 60%, #ffffff 100%);">
+  <div class="dg-deco-wrap">
+    <div class="dg-deco dg-d1"></div>
+    <div class="dg-deco dg-d2"></div>
+    <div class="dg-deco dg-d3"></div>
+  </div>
  
-  <div class="section-inner">
+  <div class="section-inner" style="position: relative; z-index: 2;">
  
     <!-- Header -->
     <div class="digital-header reveal">
@@ -1123,9 +1492,85 @@
       </div>
  
     </div><!-- end .digital-grid -->
- 
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     ─── CARDBOARD DEAL SECTION ───
+══════════════════════════════════════════════════ -->
+<section id="deal-section">
+  <div class="cb-sticky-viewport">
+    
+    <div class="cb-progress-line"><div class="cb-progress-fill" id="scroll-progress"></div></div>
+
+    <!-- STRICT TEXT ZONE (Top 40%) -->
+    <div class="cb-text-zone">
+      <div class="cb-eyebrow"><span class="cb-dot"></span> Exclusive to TTC</div>
+      <h2 class="cb-title">Ace the Exam.<br><span>Claim the Exampad.</span></h2>
+      <p class="cb-sub">
+        Hard work deserves a physical reward. Top-performing TTC students get a personalized exampad featuring their own photos and memories for free.
+      </p>
+    </div>
+
+    <!-- STRICT CARDS ZONE (Bottom 60%) -->
+    <div class="cb-cards-zone">
+      
+      <div class="cb-card-slot" style="z-index: 1;">
+        <div class="cb-card-inner" style="--rot: -4deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/20Q5dRpR/file-000000007910720ba4a4731a05316f37.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 2;">
+        <div class="cb-card-inner" style="--rot: 3deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/Zp564ds0/1000069213.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 3;">
+        <div class="cb-card-inner" style="--rot: -2deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/sBYJtNH/file-00000000c6c4720b8302d8eba8620ff3.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 4;">
+        <div class="cb-card-inner" style="--rot: 4deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/5gFb2b5t/1000069215.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 5;">
+        <div class="cb-card-inner" style="--rot: -3deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/VcmG89Fs/1000069214.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 6;">
+        <div class="cb-card-inner" style="--rot: 2deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/VWyGY6Wq/file-000000001ab47208a0c190647b2b24d5.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 7;">
+        <div class="cb-card-inner" style="--rot: -1deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/7NRv8KrS/file-00000000fc647208b24bcfe4a693f0e8.png" alt="TTC Exampad">
+        </div>
+      </div>
+      <div class="cb-card-slot" style="z-index: 8;">
+        <div class="cb-card-inner" style="--rot: 5deg;">
+          <img class="cb-card-img" src="https://i.ibb.co/KzGN8Y3M/1000069216.png" alt="TTC Exampad">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Final CTA Button -->
+    <div class="cb-cta-wrapper" id="cta-button">
+      <a href="#contact" class="cb-cta">Enroll & Claim Yours →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIGITAL CTA STRIP (After cardboard) -->
+<section id="digital-cta" style="padding: 40px 20px 80px;">
+  <div class="section-inner">
     <!-- Bottom strip -->
-    <div class="digital-cta-strip reveal">
+    <div class="digital-cta-strip reveal" style="margin-top: 0;">
       <div class="dcs-left">
         <div class="dcs-emoji">🚀</div>
         <strong>Only available for enrolled TTC students</strong>
@@ -1136,10 +1581,8 @@
         <a href="#contact" class="btn-primary">📝 Enroll to Unlock All →</a>
       </div>
     </div>
- 
   </div>
 </section>
- 
  
 <!-- ═══════════════════════════════════════════
      SUMMER CLASSES SECTION
@@ -1444,112 +1887,128 @@
  
   </div>
 </section>
- 
-<!-- SUBJECTS -->
-<section id="subjects">
-  <div class="section-inner">
-    <div class="section-tag">📚 What We Teach</div>
-    <h2 class="section-title">Subjects We Cover</h2>
-    <p class="section-desc">Comprehensive coaching across all core subjects to help your child excel.</p>
-    <div class="subjects-grid">
-      <div class="subject-pill" style="animation-delay:0.05s"><span class="pill-icon">🔢</span>Maths</div>
-      <div class="subject-pill" style="animation-delay:0.1s"><span class="pill-icon">✏️</span>English</div>
-      <div class="subject-pill" style="animation-delay:0.15s"><span class="pill-icon">🔬</span>Science</div>
-      <div class="subject-pill" style="animation-delay:0.2s"><span class="pill-icon">⚗️</span>Chemistry</div>
-      <div class="subject-pill" style="animation-delay:0.25s"><span class="pill-icon">⚡</span>Physics</div>
-      <div class="subject-pill" style="animation-delay:0.3s"><span class="pill-icon">🧬</span>Biology</div>
-      <div class="subject-pill" style="animation-delay:0.35s"><span class="pill-icon">🌏</span>Geography</div>
-      <div class="subject-pill" style="animation-delay:0.4s"><span class="pill-icon">🏛️</span>History</div>
-      <div class="subject-pill" style="animation-delay:0.45s"><span class="pill-icon">⚖️</span>Civics</div>
-      <div class="subject-pill" style="animation-delay:0.5s"><span class="pill-icon">💹</span>Economics</div>
-      <div class="subject-pill" style="animation-delay:0.55s"><span class="pill-icon">🔤</span>Hindi</div>
-      <div class="subject-pill" style="animation-delay:0.6s"><span class="pill-icon">📝</span>Marathi</div>
-      <div class="subject-pill" style="animation-delay:0.65s"><span class="pill-icon">🌟</span>G.K.</div>
-      <div class="subject-pill" style="animation-delay:0.7s"><span class="pill-icon">💻</span>M.S. / Computer</div>
-      <div class="subject-pill" style="animation-delay:0.75s"><span class="pill-icon">🗺️</span>S.S.T.</div>
-    </div>
-  </div>
-</section>
- 
-<!-- TEACHERS -->
+
+<!-- TEACHERS (Editorial Faculty Board) -->
 <section id="teachers">
   <div class="section-inner">
-    <div class="section-tag">👩‍🏫 Our Team</div>
-    <h2 class="section-title">Meet Your Educators</h2>
-    <p class="section-desc">Dedicated, qualified teachers committed to every student's success.</p>
-    <div class="teachers-grid">
-      <div class="teacher-card tc-1">
-        <div class="teacher-banner"><div class="teacher-avatar">T</div></div>
-        <div class="teacher-body">
-          <div class="teacher-name">Tushar Nanwani</div>
-          <div class="teacher-role">Founder & Head Teacher</div>
-          <div class="teacher-subjects">
-            <span class="subj-tag">✏️ English</span>
-            <span class="subj-tag">🔢 Maths</span>
-            <span class="subj-tag">💹 Economics</span>
-          </div>
+    <div class="section-tag reveal">👩‍🏫 Our Team</div>
+    <h2 class="section-title reveal">Meet Your Educators</h2>
+    <p class="section-desc reveal" style="margin:auto;">Dedicated, qualified teachers committed to every student's success.</p>
+    
+    <div class="faculty-board reveal">
+      
+      <!-- Tushar -->
+      <div class="f-col c-coral">
+        <div class="fc-dept">Maths & English</div>
+        
+        <div class="fc-name-wrap">
+          <div class="t-particle tp-1" style="--tx:-80px;--ty:-60px;--r:-45deg;">+</div>
+          <div class="t-particle tp-2" style="--tx:80px;--ty:-50px;--r:45deg;">×</div>
+          <div class="t-particle tp-3" style="--tx:-90px;--ty:10px;--r:-90deg;">÷</div>
+          <div class="t-particle tp-4" style="--tx:90px;--ty:20px;--r:90deg;">%</div>
+          <div class="t-particle tp-5" style="--tx:-60px;--ty:70px;--r:-120deg;">∞</div>
+          <div class="t-particle tp-6" style="--tx:70px;--ty:60px;--r:120deg;">π</div>
+          <h3 class="fc-name">Tushar<br>Nanwani</h3>
+        </div>
+        
+        <p class="fc-role">Founder & Head Teacher</p>
+        <div class="fc-tags">
+          <span class="fc-tag">English</span>
+          <span class="fc-tag">English Grammar</span>
+          <span class="fc-tag">Maths</span>
+          <span class="fc-tag">Economics</span>
         </div>
       </div>
-      <div class="teacher-card tc-2">
-        <div class="teacher-banner"><div class="teacher-avatar">M</div></div>
-        <div class="teacher-body">
-          <div class="teacher-name">Mahek Nanwani</div>
-          <div class="teacher-role">Science & Social Studies</div>
-          <div class="teacher-subjects">
-            <span class="subj-tag">⚡ Physics</span>
-            <span class="subj-tag">⚗️ Chemistry</span>
-            <span class="subj-tag">🧬 Biology</span>
-            <span class="subj-tag">🏛️ History</span>
-            <span class="subj-tag">⚖️ Civics</span>
-            <span class="subj-tag">🌏 Geography</span>
-          </div>
+
+      <!-- Mahek -->
+      <div class="f-col c-sky">
+        <div class="fc-dept">Sciences & SST</div>
+        
+        <div class="fc-name-wrap">
+          <div class="t-particle tp-1" style="--tx:-70px;--ty:-70px;--r:-30deg;">H₂O</div>
+          <div class="t-particle tp-2" style="--tx:80px;--ty:-60px;--r:45deg;">O₂</div>
+          <div class="t-particle tp-3" style="--tx:-90px;--ty:20px;--r:-60deg;">Δ</div>
+          <div class="t-particle tp-4" style="--tx:90px;--ty:10px;--r:60deg;">Ω</div>
+          <div class="t-particle tp-5" style="--tx:-60px;--ty:80px;--r:-120deg;">E=mc²</div>
+          <div class="t-particle tp-6" style="--tx:70px;--ty:70px;--r:120deg;">∑</div>
+          <h3 class="fc-name">Mahek<br>Nanwani</h3>
+        </div>
+
+        <p class="fc-role">Lead Educator</p>
+        <div class="fc-tags">
+          <span class="fc-tag">Physics</span>
+          <span class="fc-tag">Chemistry</span>
+          <span class="fc-tag">Biology</span>
+          <span class="fc-tag">History</span>
+          <span class="fc-tag">Geography</span>
+          <span class="fc-tag">Civics</span>
         </div>
       </div>
-      <div class="teacher-card tc-3">
-        <div class="teacher-banner"><div class="teacher-avatar">K</div></div>
-        <div class="teacher-body">
-          <div class="teacher-name">Kajal Nanwani</div>
-          <div class="teacher-role">Languages & Technology</div>
-          <div class="teacher-subjects">
-            <span class="subj-tag">🔤 Hindi</span>
-            <span class="subj-tag">📝 Marathi</span>
-            <span class="subj-tag">🌟 G.K.</span>
-            <span class="subj-tag">💻 M.S.</span>
-            <span class="subj-tag">🖥️ Computer</span>
-          </div>
+
+      <!-- Kajal -->
+      <div class="f-col c-amber">
+        <div class="fc-dept">Hindi & Marathi</div>
+        
+        <div class="fc-name-wrap">
+          <div class="t-particle tp-1" style="--tx:-70px;--ty:-60px;--r:-20deg;">अ</div>
+          <div class="t-particle tp-2" style="--tx:80px;--ty:-50px;--r:30deg;">आ</div>
+          <div class="t-particle tp-3" style="--tx:-90px;--ty:10px;--r:-60deg;">इ</div>
+          <div class="t-particle tp-4" style="--tx:90px;--ty:20px;--r:45deg;">क</div>
+          <div class="t-particle tp-5" style="--tx:-60px;--ty:70px;--r:-90deg;">ख</div>
+          <div class="t-particle tp-6" style="--tx:70px;--ty:60px;--r:90deg;">ग</div>
+          <h3 class="fc-name">Kajal<br>Nanwani</h3>
+        </div>
+
+        <p class="fc-role">Lead Educator</p>
+        <div class="fc-tags">
+          <span class="fc-tag">Hindi</span>
+          <span class="fc-tag">Marathi</span>
+          <span class="fc-tag">MS</span>
+          <span class="fc-tag">G.K.</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
  
-<!-- CLASSES & INFO -->
+<!-- CLASSES & INFO (Interactive Carousel) -->
 <section id="classes">
-  <div class="section-inner">
-    <div class="section-tag">🎒 Eligibility</div>
-    <h2 class="section-title">Classes We Serve</h2>
-    <p class="section-desc">We welcome students from Class 1st through Class 10th.</p>
-    <div class="class-scroll">
-      <div class="class-chip"><div class="chip-num">1<sup>st</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">2<sup>nd</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">3<sup>rd</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">4<sup>th</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">5<sup>th</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">6<sup>th</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">7<sup>th</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">8<sup>th</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">9<sup>th</sup></div><div class="chip-label">Class</div></div>
-      <div class="class-chip"><div class="chip-num">10<sup>th</sup></div><div class="chip-label">Class</div></div>
+  <div class="section-inner" style="max-width:100%;">
+    <div style="text-align: center; position: relative; z-index: 2; padding: 0 40px;">
+      <div class="section-tag reveal">🎒 Classes</div>
+      <h2 class="section-title reveal">Classes We Serve</h2>
+      <p class="section-desc reveal" style="margin:auto;">From 1st to 10th standard. Building strong foundations and board-ready confidence.</p>
     </div>
-    <div class="info-cards reveal">
-      <div class="info-stat-card"><span class="isc-icon">⏰</span><div class="isc-value">4 PM – 8 PM</div><div class="isc-label">Afternoon Timings</div></div>
-      <div class="info-stat-card"><span class="isc-icon">📍</span><div class="isc-value">Wardha</div><div class="isc-label">Maharashtra, India</div></div>
-      <div class="info-stat-card"><span class="isc-icon">🏫</span><div class="isc-value">STATE · CBSE · ICSE</div><div class="isc-label">Boards Covered</div></div>
-      <div class="info-stat-card"><span class="isc-icon">📚</span><div class="isc-value">1st – 10th</div><div class="isc-label">Standards Covered</div></div>
+    
+    <div class="carousel-wrap reveal">
+      <button class="c-btn prev" onclick="scrollCarousel(-1)">&#8249;</button>
+      <div class="carousel-track" id="classCarousel">
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">1<sup>st</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Primary</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">2<sup>nd</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Primary</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">3<sup>rd</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Primary</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">4<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Primary</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">5<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Middle</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">6<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Middle</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">7<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Middle</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">8<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">High School</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">9<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">High School</div></div>
+        <div class="carousel-card" onclick="centerCard(this)"><div class="cc-num">10<sup>th</sup></div><div class="cc-lbl">Standard</div><div class="cc-tag">Board Exams</div></div>
+      </div>
+      <button class="c-btn next" onclick="scrollCarousel(1)">&#8250;</button>
+    </div>
+    
+    <div class="section-inner">
+      <div class="info-cards reveal">
+        <div class="info-stat-card"><span class="isc-icon">⏰</span><div class="isc-value">4 PM – 8 PM</div><div class="isc-label">Afternoon Timings</div></div>
+        <div class="info-stat-card"><span class="isc-icon">📍</span><div class="isc-value">Wardha</div><div class="isc-label">Maharashtra, India</div></div>
+        <div class="info-stat-card"><span class="isc-icon">🏫</span><div class="isc-value">STATE · CBSE · ICSE</div><div class="isc-label">Boards Covered</div></div>
+        <div class="info-stat-card"><span class="isc-icon">📚</span><div class="isc-value">1st – 10th</div><div class="isc-label">Standards Covered</div></div>
+      </div>
     </div>
   </div>
 </section>
- 
+
 <!-- WHY TTC -->
 <section id="preview">
   <div class="section-inner">
@@ -1728,7 +2187,7 @@
 
     <!-- The Review CTA Block -->
     <div class="review-cta-modern reveal">
-      <div class="rcm-title">Love TTC? Share your experience!</div>
+      <div class="rcm-title">Love TTC? Share experience!</div>
       <p style="font-size: 0.95rem; opacity: 0.9; margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">Your feedback helps other parents find us and motivates our teachers to keep giving their best every single day.</p>
       <a href="https://g.page/r/CdUkswJ0ZulAEBE/review" target="_blank" rel="noopener" class="rcm-btn">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" style="width:18px;"> Write a Google Review
@@ -1810,12 +2269,11 @@
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <a href="#subjects">Subjects</a>
         <a href="#teachers">Our Teachers</a>
+        <a href="#classes">Classes</a>
         <a href="#digital">📱 Digital Tools</a>
         <a href="#summer">☀️ Summer Classes</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">Enroll Now</a>
       </div>
       <div class="footer-col">
         <h4>Info</h4>
@@ -1867,6 +2325,23 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 20);
 });
+
+// ── MOBILE MENU TOGGLE ──
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('show-menu');
+  });
+  // Close menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('show-menu');
+    });
+  });
+}
  
 // ── SUMMER TAB SWITCHER ──
 function switchTab(tab) {
@@ -1894,26 +2369,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
  
-// ── SUBJECT PILLS STAGGER ──
-const pills = document.querySelectorAll('.subject-pill');
-const pillObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    pills.forEach((pill, i) => setTimeout(() => pill.classList.add('visible'), i * 60));
-    pillObserver.disconnect();
-  }
-}, { threshold: 0.1 });
-if (pills.length) pillObserver.observe(pills[0].closest('.subjects-grid'));
- 
-// ── TEACHER CARDS STAGGER ──
-const tcards = document.querySelectorAll('.teacher-card');
-const cardObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    tcards.forEach((card, i) => setTimeout(() => card.classList.add('visible'), i * 150));
-    cardObserver.disconnect();
-  }
-}, { threshold: 0.1 });
-if (tcards.length) cardObserver.observe(tcards[0].closest('.teachers-grid'));
- 
 // ── DEVICE TILT ──
 const device = document.querySelector('.device');
 if (device) {
@@ -1921,6 +2376,95 @@ if (device) {
     const progress = Math.max(0, Math.min(1, 1 - device.getBoundingClientRect().top / window.innerHeight));
     device.style.transform = `perspective(1200px) rotateX(${8 - progress * 8}deg)`;
   });
+}
+
+// ── CAROUSEL LOGIC ──
+const carouselTrack = document.getElementById('classCarousel');
+if (carouselTrack) {
+  const updateCarousel = () => {
+    const center = carouselTrack.getBoundingClientRect().left + carouselTrack.offsetWidth / 2;
+    let minDiff = Infinity;
+    let active = null;
+    
+    document.querySelectorAll('.carousel-card').forEach(card => {
+      const cardCenter = card.getBoundingClientRect().left + card.offsetWidth / 2;
+      const diff = Math.abs(center - cardCenter);
+      if (diff < minDiff) { minDiff = diff; active = card; }
+    });
+    
+    document.querySelectorAll('.carousel-card').forEach(c => c.classList.remove('active'));
+    if (active) active.classList.add('active');
+  };
+
+  carouselTrack.addEventListener('scroll', updateCarousel);
+  window.addEventListener('resize', updateCarousel);
+  setTimeout(updateCarousel, 100);
+}
+
+window.scrollCarousel = (dir) => {
+  if(!carouselTrack) return;
+  const cardWidth = 240; // 220px card + 20px gap
+  carouselTrack.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+};
+
+window.centerCard = (el) => {
+  const trackCenter = carouselTrack.offsetWidth / 2;
+  const scrollPos = el.offsetLeft - trackCenter + el.offsetWidth / 2;
+  carouselTrack.scrollTo({ left: scrollPos, behavior: 'smooth' });
+};
+
+// ── CARDBOARD DEAL ANIMATION ──
+const cbSection = document.getElementById('deal-section');
+const cbSlots = document.querySelectorAll('.cb-card-slot');
+const cbProgressBar = document.getElementById('scroll-progress');
+const cbCta = document.getElementById('cta-button');
+if (cbSection) {
+  const totalCards = cbSlots.length;
+  const durationPerCard = 0.15; 
+  const staggerArea = 0.85 - durationPerCard;
+  const staggerStep = staggerArea / (totalCards - 1);
+
+  function updateDeal() {
+    const rect = cbSection.getBoundingClientRect();
+    const maxScroll = rect.height - window.innerHeight;
+    const scrollY = -rect.top;
+    let progress = Math.max(0, Math.min(1, scrollY / maxScroll));
+    cbProgressBar.style.width = `${progress * 100}%`;
+    cbSlots.forEach((el, index) => {
+      const startTime = index * staggerStep;
+      const endTime = startTime + durationPerCard;
+      let cardProgress = (progress - startTime) / (endTime - startTime);
+      cardProgress = Math.max(0, Math.min(1, cardProgress));
+      const easeOut = 1 - Math.pow(1 - cardProgress, 3);
+      if (progress < startTime) {
+        el.style.opacity = '0';
+        el.style.transform = `translate(40vw, 80vh) rotate(30deg) scale(0.5)`;
+      } else {
+        el.style.opacity = Math.min(1, cardProgress * 4).toString();
+        const x = 40 - (easeOut * 40);
+        const y = 80 - (easeOut * 80);
+        const rot = 30 - (easeOut * 30);
+        const scale = 0.5 + (easeOut * 0.5);
+        el.style.transform = `translate(${x}vw, ${y}vh) rotate(${rot}deg) scale(${scale})`;
+      }
+    });
+    if (progress > 0.80) { cbCta.classList.add('visible'); } 
+    else { cbCta.classList.remove('visible'); }
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => { updateDeal(); ticking = false; });
+      ticking = true;
+    }
+  });
+  cbSlots.forEach(slot => {
+    slot.addEventListener('touchstart', () => {
+      cbSlots.forEach(s => s.classList.remove('hovered'));
+      slot.classList.add('hovered');
+    });
+  });
+  updateDeal();
 }
  
 // ── FORMSPREE AJAX ──
