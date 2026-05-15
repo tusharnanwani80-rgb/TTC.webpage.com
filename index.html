@@ -60,33 +60,6 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 10px; }
  
-  /* ─── SUMMER ANNOUNCEMENT RIBBON ─── */
-  #summer-ribbon {
-    background: linear-gradient(90deg, #FF8C42, #ff6b6b, #FFD166, #FF8C42);
-    background-size: 300% 100%;
-    animation: ribbon-slide 4s linear infinite;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 0.88rem;
-    font-weight: 800;
-    letter-spacing: 0.3px;
-    position: relative;
-    z-index: 200;
-    cursor: pointer;
-  }
-  #summer-ribbon:hover { filter: brightness(1.08); }
-  @keyframes ribbon-slide {
-    0%{background-position:0% 50%} 100%{background-position:300% 50%}
-  }
-  .ribbon-inner { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
-  .ribbon-badge {
-    background: rgba(255,255,255,0.25);
-    border: 1.5px solid rgba(255,255,255,0.5);
-    border-radius: 30px; padding: 3px 12px; font-size: 0.75rem; font-weight: 900;
-    text-transform: uppercase; letter-spacing: 1px;
-  }
-  .ribbon-pulse { display: inline-block; width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: pulse-dot 1s infinite; }
   @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
  
   /* ─── NAV ─── */
@@ -127,16 +100,6 @@
     transition: all .25s;
   }
   .nav-links a:hover { background: var(--coral-light); color: var(--coral); }
-  .nav-summer {
-    background: linear-gradient(135deg, #FF8C42, #ff6b6b) !important;
-    color: white !important; border-radius: 40px !important;
-    padding: 8px 16px !important; font-size: 0.82rem !important;
-    animation: summer-glow 2s ease-in-out infinite alternate;
-  }
-  @keyframes summer-glow {
-    from { box-shadow: 0 4px 14px rgba(255,140,66,0.35); }
-    to { box-shadow: 0 6px 22px rgba(255,140,66,0.6); }
-  }
   .nav-cta {
     background: var(--coral); color: white !important;
     padding: 8px 20px !important; border-radius: 40px;
@@ -207,14 +170,6 @@
     transition: all .25s;
   }
   .btn-secondary:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-3px); }
-  .btn-summer {
-    background: linear-gradient(135deg, #FF8C42, #FFD166); color: white;
-    padding: 14px 28px; border-radius: 50px; border: none;
-    font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
-    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
-    transition: all .25s; box-shadow: 0 8px 24px rgba(255,140,66,0.4);
-  }
-  .btn-summer:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(255,140,66,0.5); }
   .hero-stats {
     display: flex; gap: 28px; margin-top: 36px;
     animation: fade-up .8s ease .4s both;
@@ -232,11 +187,6 @@
   .hc-main { background: white; width: 280px; top: 50px; left: 40px; animation-delay: 0s; }
   .hc-2 { background: var(--coral); color: white; width: 220px; top: 0; right: 0; animation-delay: 1.5s; }
   .hc-3 { background: var(--sky); color: white; width: 200px; bottom: 40px; right: 20px; animation-delay: 3s; }
-  .hc-summer {
-    background: linear-gradient(135deg, #FF8C42, #FFD166);
-    color: white; width: 180px; bottom: 0; left: 20px; animation-delay: 2s;
-    animation: float 6s ease-in-out infinite;
-  }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
   .hc-icon { font-size: 2rem; margin-bottom: 10px; }
   .hc-label { font-weight: 800; font-size: 0.95rem; margin-bottom: 4px; }
@@ -503,191 +453,6 @@
   .dcs-left strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text); display: block; }
   .dcs-left span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
   .dcs-actions { display: flex; gap: 12px; flex-wrap: wrap; }
- 
-  /* ══════════════════════════════════════════════════
-     ─── SUMMER CLASSES SECTION ───
-  ══════════════════════════════════════════════════ */
-  #summer {
-    background: linear-gradient(170deg, #fff8f0 0%, #fffdf5 40%, #f0f9ff 100%);
-    position: relative; overflow: hidden;
-    padding: 100px 40px;
-  }
-  /* Decorative suns */
-  .summer-deco {
-    position: absolute; border-radius: 50%; pointer-events: none; opacity: 0.08;
-  }
-  .sd-1 { width: 400px; height: 400px; background: #FF8C42; top: -120px; right: -80px; }
-  .sd-2 { width: 280px; height: 280px; background: #FFD166; bottom: -60px; left: -60px; }
-  .sd-3 { width: 180px; height: 180px; background: #06D6A0; top: 50%; left: 10%; }
- 
-  .summer-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 2; }
-  .summer-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, #FF8C42, #FFD166);
-    color: white; font-size: 0.82rem; font-weight: 900; padding: 8px 20px;
-    border-radius: 40px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
-    box-shadow: 0 6px 20px rgba(255,140,66,0.35);
-  }
-  .summer-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    font-weight: 900; color: var(--text); line-height: 1.15; margin-bottom: 16px;
-  }
-  .summer-title .highlight {
-    background: linear-gradient(135deg, #FF8C42, #ff6b6b);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .summer-subtitle { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 580px; margin: 0 auto 30px; }
- 
-  /* Admission Countdown Banner */
-  .admission-banner {
-    display: inline-flex; align-items: center; gap: 14px;
-    background: white; border: 2px solid #FF8C42;
-    border-radius: 60px; padding: 12px 28px;
-    box-shadow: 0 8px 30px rgba(255,140,66,0.18);
-    margin: 0 auto;
-  }
-  .ab-icon { font-size: 1.5rem; animation: bounce-icon 1s ease-in-out infinite alternate; }
-  @keyframes bounce-icon { from{transform:translateY(0)} to{transform:translateY(-4px)} }
-  .ab-text strong { display: block; font-size: 1rem; font-weight: 900; color: var(--text); }
-  .ab-text span { font-size: 0.82rem; color: #FF8C42; font-weight: 700; }
-  .ab-date {
-    background: linear-gradient(135deg, #FF8C42, #ff6b6b);
-    color: white; font-weight: 900; font-size: 0.88rem;
-    padding: 8px 16px; border-radius: 30px;
-    white-space: nowrap;
-  }
- 
-  /* Tab Switcher */
-  .summer-tabs {
-    display: flex; justify-content: center; gap: 12px;
-    margin-bottom: 44px; position: relative; z-index: 2;
-  }
-  .summer-tab {
-    padding: 12px 32px; border-radius: 50px; border: 2.5px solid transparent;
-    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem;
-    cursor: pointer; transition: all .3s;
-  }
-  .summer-tab.foundation {
-    background: #fff5ee; color: #FF8C42; border-color: #FF8C42;
-  }
-  .summer-tab.foundation.active, .summer-tab.foundation:hover {
-    background: linear-gradient(135deg, #FF8C42, #ffb347); color: white;
-    box-shadow: 0 8px 24px rgba(255,140,66,0.4); transform: translateY(-2px);
-  }
-  .summer-tab.advanced {
-    background: #eff6ff; color: #4da6ff; border-color: #4da6ff;
-  }
-  .summer-tab.advanced.active, .summer-tab.advanced:hover {
-    background: linear-gradient(135deg, #4da6ff, #6366f1); color: white;
-    box-shadow: 0 8px 24px rgba(77,166,255,0.4); transform: translateY(-2px);
-  }
- 
-  /* Tab Panels */
-  .summer-panel { display: none; }
-  .summer-panel.active { display: block; animation: panel-in .4s ease both; }
-  @keyframes panel-in { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
- 
-  .panel-header {
-    background: white; border-radius: 20px; padding: 28px 36px;
-    margin-bottom: 28px; display: flex; align-items: center; gap: 20px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.07); position: relative; overflow: hidden;
-  }
-  .panel-header::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  }
-  .foundation-panel .panel-header::before { background: linear-gradient(90deg, #FF8C42, #FFD166); }
-  .advanced-panel .panel-header::before { background: linear-gradient(90deg, #4da6ff, #a78bfa); }
-  .ph-icon { font-size: 3rem; }
-  .ph-info {}
-  .ph-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
-  .ph-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
-  .ph-badge {
-    margin-left: auto; padding: 8px 18px; border-radius: 30px;
-    font-weight: 900; font-size: 0.82rem; white-space: nowrap;
-  }
-  .foundation-panel .ph-badge { background: #fff5ee; color: #FF8C42; border: 2px solid #FF8C42; }
-  .advanced-panel .ph-badge { background: #eff6ff; color: #4da6ff; border: 2px solid #4da6ff; }
- 
-  /* Course Cards Grid */
-  .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 18px;
-    position: relative; z-index: 2;
-  }
-  .course-card {
-    background: white; border-radius: 18px; padding: 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-    border: 2px solid #f0f0f0;
-    transition: all .3s; cursor: default;
-    display: flex; flex-direction: column; gap: 14px;
-    position: relative; overflow: hidden;
-  }
-  .course-card::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    opacity: 0; transition: opacity .3s;
-  }
-  .foundation-panel .course-card::after { background: linear-gradient(90deg, #FF8C42, #FFD166); }
-  .advanced-panel .course-card::after { background: linear-gradient(90deg, #4da6ff, #a78bfa); }
-  .course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
-  .course-card:hover::after { opacity: 1; }
-  .foundation-panel .course-card:hover { border-color: #FF8C42; }
-  .advanced-panel .course-card:hover { border-color: #4da6ff; }
- 
-  .cc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-  .cc-icon-wrap {
-    width: 50px; height: 50px; border-radius: 14px;
-    display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-  .foundation-panel .cc-icon-wrap { background: #fff5ee; }
-  .advanced-panel .cc-icon-wrap { background: #eff6ff; }
-  .cc-fee-tag {
-    padding: 6px 14px; border-radius: 30px;
-    font-weight: 900; font-size: 0.88rem; white-space: nowrap;
-  }
-  .foundation-panel .cc-fee-tag { background: #fff5ee; color: #FF8C42; }
-  .advanced-panel .cc-fee-tag { background: #eff6ff; color: #4da6ff; }
-  .cc-name { font-weight: 900; font-size: 1rem; color: var(--text); line-height: 1.3; }
-  .cc-topics { display: flex; flex-wrap: wrap; gap: 6px; }
-  .topic-chip {
-    font-size: 0.73rem; font-weight: 700; padding: 3px 10px; border-radius: 20px;
-    background: #f8f8f8; color: var(--muted); border: 1px solid #eee;
-  }
- 
-  /* Combo Discount Banner */
-  .combo-discount-banner {
-    margin-top: 28px;
-    background: linear-gradient(135deg, #fff9f2, #fff0f0);
-    border: 2px dashed #FF8C42;
-    border-radius: 16px;
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    justify-content: center;
-    box-shadow: 0 8px 24px rgba(255,140,66,0.12);
-    text-align: left;
-    position: relative;
-    z-index: 2;
-  }
-  .advanced-panel .combo-discount-banner {
-    background: linear-gradient(135deg, #f0f7ff, #f3f0ff);
-    border-color: #4da6ff;
-    box-shadow: 0 8px 24px rgba(77,166,255,0.12);
-  }
-  .cdb-icon { font-size: 2.2rem; animation: bounce-icon 2s infinite; }
-  .cdb-text strong { display: block; font-size: 1.15rem; color: var(--text); font-weight: 900; margin-bottom: 4px; }
-  .cdb-text span { font-size: 0.95rem; color: #e67300; font-weight: 700; }
-  .advanced-panel .cdb-text span { color: #0066cc; }
- 
-  /* Summer CTA */
-  .summer-cta-wrap {
-    text-align: center; margin-top: 50px; position: relative; z-index: 2;
-  }
-  .summer-cta-wrap p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; font-weight: 600; }
  
   /* ══════════════════════════════════════════════════
      ─── TEACHERS: EDITORIAL FACULTY BOARD ───
@@ -1092,7 +857,6 @@
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-visual { display: none; }
     section { padding: 60px 20px; }
-    #summer { padding: 60px 20px; }
     .contact-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; gap: 24px; }
     .device-inner { grid-template-columns: 1fr; }
@@ -1110,8 +874,6 @@
     .panel-header { flex-wrap: wrap; }
     .ph-badge { margin-left: 0; }
     .admission-banner { flex-wrap: wrap; text-align: center; justify-content: center; }
-    .summer-tabs { flex-direction: row; gap: 8px; justify-content: stretch; }
-    .summer-tab { padding: 10px; font-size: 0.8rem; flex: 1; text-align: center; }
     .reviews-container { padding: 20px; }
 
     /* Faculty Board Mobile Setup */
@@ -1246,16 +1008,6 @@
 </head>
 <body>
  
-<!-- SUMMER RIBBON -->
-<div id="summer-ribbon" onclick="document.getElementById('summer').scrollIntoView({behavior:'smooth'})">
-  <div class="ribbon-inner">
-    <span class="ribbon-pulse"></span>
-    <span class="ribbon-badge">🌞 New</span>
-    <span>TTC Summer Classes 2026 — Classes starting from <strong>5th May, 2026!</strong> Foundation &amp; Advanced Batches Available</span>
-    <span style="opacity:0.7;font-size:0.75rem;">Click to know more ↓</span>
-  </div>
-</div>
- 
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-brand">
@@ -1277,7 +1029,6 @@
     <a href="#teachers">Teachers</a>
     <a href="#classes">Classes</a>
     <a href="#digital" style="color:var(--sky);font-weight:800;">📱 Digital Tools</a>
-    <a href="#summer" class="nav-summer">☀️ Summer Classes</a>
     <a href="#faq">FAQ</a>
     <a href="#contact" class="nav-cta">Enroll Now</a>
   </div>
@@ -1303,7 +1054,6 @@
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">📝 Enroll Today</a>
-        <a href="#summer" class="btn-summer">☀️ Summer Classes</a>
         <a href="#teachers" class="btn-secondary">👩‍🏫 Our Teachers</a>
         <a href="#deal-section" class="btn-secondary" style="border-color: var(--amber); color: var(--amber);">🎁 Gifts from us</a>
       </div>
@@ -1329,11 +1079,6 @@
           <div class="hc-icon">⏰</div>
           <div class="hc-label">4 PM – 8 PM</div>
           <div class="hc-sub">Mon to Sat</div>
-        </div>
-        <div class="hero-card hc-summer">
-          <div class="hc-icon">☀️</div>
-          <div class="hc-label">Summer Classes</div>
-          <div class="hc-sub">Starts 5th May!</div>
         </div>
         <div class="hero-card" style="background:linear-gradient(135deg,#4da6ff,#6366f1);color:white;width:190px;top:160px;right:-10px;animation-delay:2.5s;">
           <div class="hc-icon">📊</div>
@@ -1583,310 +1328,6 @@
     </div>
   </div>
 </section>
- 
-<!-- ═══════════════════════════════════════════
-     SUMMER CLASSES SECTION
-═══════════════════════════════════════════ -->
-<section id="summer">
-  <!-- Decorative blobs -->
-  <div class="summer-deco sd-1"></div>
-  <div class="summer-deco sd-2"></div>
-  <div class="summer-deco sd-3"></div>
- 
-  <div class="section-inner">
-    <!-- Header -->
-    <div class="summer-header reveal">
-      <div class="summer-tag">☀️ Limited Seats • Summer 2026</div>
-      <h2 class="summer-title">TTC <span class="highlight">Summer Classes</span><br>Are Here!</h2>
-      <p class="summer-subtitle">Two specially designed programmes — Foundation for Class 1–6 and Advanced Gap-Filling for Class 7–10. Give your child the head-start they deserve this summer.</p>
-      <div class="admission-banner">
-        <span class="ab-icon">🗓️</span>
-        <div class="ab-text">
-          <strong>Classes Starting</strong>
-          <span>Register your interest now!</span>
-        </div>
-        <div class="ab-date">📅 5th May, 2026</div>
-      </div>
-    </div>
- 
-    <!-- Tab Switcher -->
-    <div class="summer-tabs reveal">
-      <button class="summer-tab foundation active" onclick="switchTab('foundation')">🌱 Foundation Classes · Class 1–6</button>
-      <button class="summer-tab advanced" onclick="switchTab('advanced')">🚀 Advanced Classes · Class 7–10</button>
-    </div>
- 
-    <!-- FOUNDATION PANEL -->
-    <div class="summer-panel foundation-panel active" id="panel-foundation">
-      <div class="panel-header reveal">
-        <span class="ph-icon">🌱</span>
-        <div class="ph-info">
-          <div class="ph-title">TTC Foundation Classes</div>
-          <div class="ph-desc">Best suited for weak students. Specially designed for Class 1–6 to build a strong academic foundation before the new school year begins.</div>
-        </div>
-        <div class="ph-badge">Class 1 – 6</div>
-      </div>
-      <div class="courses-grid">
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">📖</div>
-            <div class="cc-fee-tag">₹ 500</div>
-          </div>
-          <div class="cc-name">Hindi Reading Practice</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Fluency</span>
-            <span class="topic-chip">Comprehension</span>
-            <span class="topic-chip">Vocabulary</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">🔤</div>
-            <div class="cc-fee-tag">₹ 500</div>
-          </div>
-          <div class="cc-name">English Reading Practice + Phonics</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Phonics</span>
-            <span class="topic-chip">Reading Aloud</span>
-            <span class="topic-chip">Comprehension</span>
-            <span class="topic-chip">Word by word reading practice</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">✍️</div>
-            <div class="cc-fee-tag">₹ 500</div>
-          </div>
-          <div class="cc-name">Hindi Handwriting Practice</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Spacing</span>
-            <span class="topic-chip">Matras</span>
-            <span class="topic-chip">Consistency</span>
-            <span class="topic-chip">Legibility</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">✏️</div>
-            <div class="cc-fee-tag">₹ 500</div>
-          </div>
-          <div class="cc-name">English Handwriting Practice</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Grip Correction</span>
-            <span class="topic-chip">Baseline</span>
-            <span class="topic-chip">Neatness</span>
-            <span class="topic-chip">Legibility</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">🖊️</div>
-            <div class="cc-fee-tag">₹ 500</div>
-          </div>
-          <div class="cc-name">English Cursive Writing</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Cursive Letters</span>
-            <span class="topic-chip">Joining</span>
-            <span class="topic-chip">Flow</span>
-            <span class="topic-chip">Speed Writing</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">🔢</div>
-            <div class="cc-fee-tag">₹ 600</div>
-          </div>
-          <div class="cc-name">Basic Maths</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Addition</span>
-            <span class="topic-chip">Subtraction</span>
-            <span class="topic-chip">Multiplication</span>
-            <span class="topic-chip">Division</span>
-            <span class="topic-chip">Tables 2–20</span>
-            <span class="topic-chip">Fractions</span>
-            <span class="topic-chip">Decimals</span>
-            <span class="topic-chip">BODMAS</span>
-            <span class="topic-chip">Word Problems</span>
-            <span class="topic-chip">Simplification of fractions</span>
-            <span class="topic-chip">Measurement and conversions</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">📝</div>
-            <div class="cc-fee-tag">₹ 500</div>
-          </div>
-          <div class="cc-name">Basic Grammar</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Articles</span>
-            <span class="topic-chip">Tenses</span>
-            <span class="topic-chip">Verbs</span>
-            <span class="topic-chip">Punctuation</span>
-            <span class="topic-chip">Use of has, have, had</span>
-            <span class="topic-chip">Use of do, does, did</span>
-            <span class="topic-chip">Conjunctions</span>
-            <span class="topic-chip">Types of sentences</span>
-          </div>
-        </div>
- 
-      </div>
-      <!-- Foundation Combo Discount Banner -->
-      <div class="combo-discount-banner reveal">
-        <div class="cdb-icon">🎉</div>
-        <div class="cdb-text">
-          <strong>Combo Discounts Available!</strong>
-          <span>Enroll in multiple subjects and get special fee benefits.</span>
-        </div>
-      </div>
-    </div>
- 
-    <!-- ADVANCED PANEL -->
-    <div class="summer-panel advanced-panel" id="panel-advanced">
-      <div class="panel-header reveal">
-        <span class="ph-icon">🚀</span>
-        <div class="ph-info">
-          <div class="ph-title">TTC Advanced Classes</div>
-          <div class="ph-desc">Specially designed for Class 7th and above to strengthen weak areas and fill critical learning gaps before the new academic year begins.</div>
-        </div>
-        <div class="ph-badge">Class 7 – 10</div>
-      </div>
-      <div class="courses-grid">
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">✍️</div>
-            <div class="cc-fee-tag">₹ 700</div>
-          </div>
-          <div class="cc-name">Answer Framing & Exam Writing Skills</div>
-          <p style="font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.5; font-weight: 600;">Best suited for students who understand the concept but struggle to write properly in exams.</p>
-          <div class="cc-topics">
-            <span class="topic-chip">Decode Questions</span>
-            <span class="topic-chip">1/3/5/8 Marks answers</span>
-            <span class="topic-chip">Grammar in Writing</span>
-            <span class="topic-chip">Board-style Practice</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">📐</div>
-            <div class="cc-fee-tag">₹ 800</div>
-          </div>
-          <div class="cc-name">Fundamentals of Maths</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Integers</span>
-            <span class="topic-chip">LCM / HCF</span>
-            <span class="topic-chip">Algebra</span>
-            <span class="topic-chip">Solve for x</span>
-            <span class="topic-chip">Percentage</span>
-            <span class="topic-chip">Ratio & Fractions</span>
-            <span class="topic-chip">Statistics</span>
-            <span class="topic-chip">Data handling</span>
-            <span class="topic-chip">Bar graph</span>
-            <span class="topic-chip">Histogram</span>
-            <span class="topic-chip">Polynomials</span>
-            <span class="topic-chip">Algebraic identities</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">⚗️</div>
-            <div class="cc-fee-tag">₹ 700</div>
-          </div>
-          <div class="cc-name">Chemistry Basics</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Matter & Types</span>
-            <span class="topic-chip">Physical/Chemical Changes</span>
-            <span class="topic-chip">Elements & Compounds</span>
-            <span class="topic-chip">Atoms & Molecules</span>
-            <span class="topic-chip">Chemical Formulae</span>
-            <span class="topic-chip">Periodic table</span>
-            <span class="topic-chip">Electronic configuration</span>
-            <span class="topic-chip">Calculation of atomic mass</span>
-            <span class="topic-chip">Calculation of atomicity</span>
-            <span class="topic-chip">Understanding reactions and balancing equations</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">⚡</div>
-            <div class="cc-fee-tag">₹ 700</div>
-          </div>
-          <div class="cc-name">Basics of Physics</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Force & Motion</span>
-            <span class="topic-chip">Work & Energy</span>
-            <span class="topic-chip">Basic Electricity</span>
-            <span class="topic-chip">Reflection of Light</span>
-            <span class="topic-chip">Refraction</span>
-            <span class="topic-chip">Convex/Concave Lens</span>
-            <span class="topic-chip">Numerical Practice</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">🧬</div>
-            <div class="cc-fee-tag">₹ 700</div>
-          </div>
-          <div class="cc-name">Basics of Biology</div>
-          <div class="cc-topics">
-            <span class="topic-chip">Cell Structure</span>
-            <span class="topic-chip">Digestive System</span>
-            <span class="topic-chip">Respiratory System</span>
-            <span class="topic-chip">Circulatory System</span>
-            <span class="topic-chip">Photosynthesis</span>
-            <span class="topic-chip">Respiration</span>
-          </div>
-        </div>
- 
-        <div class="course-card reveal">
-          <div class="cc-top">
-            <div class="cc-icon-wrap">📚</div>
-            <div class="cc-fee-tag">₹ 700</div>
-          </div>
-          <div class="cc-name">Advanced English Grammar</div>
-          <div class="cc-topics">
-            <span class="topic-chip">All Tenses</span>
-            <span class="topic-chip">Have/Has/Had</span>
-            <span class="topic-chip">Do/Does/Did</span>
-            <span class="topic-chip">Active & Passive Voice</span>
-            <span class="topic-chip">Direct/Indirect Speech</span>
-            <span class="topic-chip">Subject-Verb Agreement</span>
-            <span class="topic-chip">Letter writing</span>
-          </div>
-        </div>
- 
-      </div>
-      <!-- Advanced Combo Discount Banner -->
-      <div class="combo-discount-banner reveal">
-        <div class="cdb-icon">🎉</div>
-        <div class="cdb-text">
-          <strong>Combo Discounts Available!</strong>
-          <span>Enroll in multiple subjects and get special fee benefits.</span>
-        </div>
-      </div>
-    </div>
- 
-    <!-- CTA -->
-    <div class="summer-cta-wrap reveal">
-      <p>🗓️ Classes starting from <strong>5th May, 2026</strong> — Limited seats per batch!</p>
-      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-        <a href="#contact" class="btn-summer">📝 Pre-Register Interest</a>
-        <a href="https://wa.me/917517445450" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
-      </div>
-    </div>
- 
-  </div>
-</section>
 
 <!-- TEACHERS (Editorial Faculty Board) -->
 <section id="teachers">
@@ -2052,11 +1493,6 @@
       </div>
  
       <div class="faq-item">
-        <div class="faq-q">☀️ Tell me about Summer Classes? <span class="faq-chevron">▾</span></div>
-        <div class="faq-a">TTC offers two summer programmes: <strong>Foundation Classes</strong> for Class 1–6 (reading, handwriting, basic maths, grammar) and <strong>Advanced Classes</strong> for Class 7–10 (answer writing, maths fundamentals, science basics, grammar). Classes starting from <strong>5th May, 2026</strong>. Fees range from ₹500 to ₹800 per course depending on the subject. We also offer Combo Discounts if you enroll in multiple subjects!</div>
-      </div>
- 
-      <div class="faq-item">
         <div class="faq-q">⏰ What are the tuition timings? <span class="faq-chevron">▾</span></div>
         <div class="faq-a">
           <div class="faq-timing-grid">
@@ -2110,7 +1546,7 @@
  
       <div class="faq-item">
         <div class="faq-q">💰 What is the fees structure? <span class="faq-chevron">▾</span></div>
-        <div class="faq-a">For regular fee details, please <strong>contact us</strong> using the form below or <strong>visit us at the centre</strong> directly. For Summer Classes, fees range from <strong>₹500–₹800 per course</strong> depending on the subject.</div>
+        <div class="faq-a">For regular fee details, please <strong>contact us</strong> using the form below or <strong>visit us at the centre</strong> directly.</div>
       </div>
  
       <div class="faq-item">
@@ -2210,7 +1646,6 @@
         <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-text"><strong>Location</strong><span>Wardha, Maharashtra, India</span></div></div>
         <div class="ci-item"><div class="ci-icon">⏰</div><div class="ci-text"><strong>Class Timings</strong><span>4:00 PM – 8:00 PM, Mon–Sat</span></div></div>
         <div class="ci-item"><div class="ci-icon">🎒</div><div class="ci-text"><strong>Classes Available</strong><span>1st Standard to 10th Standard</span></div></div>
-        <div class="ci-item"><div class="ci-icon">☀️</div><div class="ci-text"><strong>Summer Classes</strong><span>Classes starting from 5th May, 2026</span></div></div>
       </div>
       <div class="contact-form reveal">
         <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
@@ -2242,9 +1677,6 @@
             <select name="programme" id="f-prog">
               <option value="">Select Programme</option>
               <option>Regular Classes</option>
-              <option>Summer Foundation Classes (Class 1–6)</option>
-              <option>Summer Advanced Classes (Class 7–10)</option>
-              <option>Both Regular + Summer</option>
             </select>
           </div>
           <div class="form-group"><label>Message / Subjects of Interest</label><textarea name="message" id="f-msg" placeholder="Tell us which subjects you're looking for help with..."></textarea></div>
@@ -2272,7 +1704,6 @@
         <a href="#teachers">Our Teachers</a>
         <a href="#classes">Classes</a>
         <a href="#digital">📱 Digital Tools</a>
-        <a href="#summer">☀️ Summer Classes</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="footer-col">
@@ -2280,7 +1711,6 @@
         <a href="#">📍 Wardha, Maharashtra</a>
         <a href="#">⏰ 4 PM – 8 PM</a>
         <a href="#">📚 Class 1 to 10</a>
-        <a href="#">☀️ Summer Classes: 5th May</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -2341,14 +1771,6 @@ if (hamburger) {
       navLinks.classList.remove('show-menu');
     });
   });
-}
- 
-// ── SUMMER TAB SWITCHER ──
-function switchTab(tab) {
-  document.querySelectorAll('.summer-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.summer-panel').forEach(p => p.classList.remove('active'));
-  document.querySelector(`.summer-tab.${tab}`).classList.add('active');
-  document.getElementById(`panel-${tab}`).classList.add('active');
 }
  
 // ── FAQ ACCORDION ──
